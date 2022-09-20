@@ -545,7 +545,7 @@ sap.ui.define(
                 const oObject = oEvent.getSource().getBindingContext("createItem").getObject();
                 var oUrl = oObject.Stream;
                 if (!oUrl) {
-                    var oUrl = `/sap/opu/odata/YZKNA/TM_FWO_SRV/FWOAttachmentSet(FwoNum='${oObject.FwoNum}',DocKey='${oObject.doc_key}',Name='${oObject.Name}',AlternativeName='${oObject.AlternativeName}',Description='${oObject.Description}',Folder='${oObject.Folder}',AttachmentType='${oObject.AttachmentType}')/$value`;
+                    var oUrl = "58c73230-5fdc-4195-869b-99e3afaced.com-yazaki-yazakisupload.comyazakiyazakisupload/sap/opu/odata/YZKNA/TM_FWO_SRV/FWOAttachmentSet(FwoNum='"+oObject.FwoNum+"',DocKey='"+oObject.doc_key+"',Name='"+oObject.Name+"',AlternativeName='"+oObject.AlternativeName+"',Description='"+oObject.Description+"',Folder='"+oObject.Folder+"',AttachmentType='"+oObject.AttachmentType+"')/$value";
                 }
                 window.open(oUrl);
             },

@@ -103,7 +103,7 @@
 				</HeaderContainer>
 			</op:headerContent>
 			<op:sections>
-				<op:ObjectPageSection titleUppercase="true" id="goalsSection" title="Header">
+				<op:ObjectPageSection titleUppercase="true" id="goalsSection" title="Header" busy="{=!${createItem>/isHeaderDataLoaded}}">
 					<op:subSections>
 						<op:ObjectPageSubSection id="goalsSectionSS1">
 							<op:blocks>
@@ -239,7 +239,7 @@
 						</op:ObjectPageSubSection>
 					</op:subSections>
 				</op:ObjectPageSection>
-				<op:ObjectPageSection titleUppercase="false" id="goalsSection0" title="Items">
+				<op:ObjectPageSection titleUppercase="false" id="goalsSection0" title="Items" busy="{=!${createItem>/isItemDataLoaded}}">
 					<op:subSections>
 						<op:ObjectPageSubSection id="goalsSectionSS10">
 							<op:blocks>
@@ -357,7 +357,7 @@
 						</op:ObjectPageSubSection>
 					</op:subSections>
 				</op:ObjectPageSection>
-				<op:ObjectPageSection titleUppercase="false" id="goalsSection1" title="Attachment">
+				<op:ObjectPageSection titleUppercase="false" id="goalsSection1" title="Attachment" busy="{=!${createItem>/isAttachmentDataLoaded}}">
 					<op:subSections>
 						<op:ObjectPageSubSection id="goalsSectionSS11">
 							<op:blocks>

@@ -117,7 +117,7 @@ function (BaseController, JSONModel, History, formatter) {
       onLinkPress: function(oEvent){
           
           const oObject=oEvent.getSource().getBindingContext().getObject();
-          const oUrl=`/sap/opu/odata/YZKNA/TM_FWO_SRV/FWOAttachmentSet(FwoNum='${oObject.trq_id}',DocKey='${oObject.doc_key}',Name='${oObject.name}',AlternativeName='${oObject.alternative_name}',Description='${oObject.description}',Folder='${oObject.folder}',AttachmentType='${oObject.attachment_type}')/$value`;
+          const oUrl=`/58c73230-5fdc-4195-869b-99e3afaced98.com-yazaki-yazakisupload.comyazakiyazakisupload/sap/opu/odata/YZKNA/TM_FWO_SRV/FWOAttachmentSet(FwoNum='${oObject.trq_id}',DocKey='${oObject.doc_key}',Name='${oObject.name}',AlternativeName='${oObject.alternative_name}',Description='${oObject.description}',Folder='${oObject.folder}',AttachmentType='${oObject.attachment_type}')/$value`;
           window.open(oUrl);
       },
   });

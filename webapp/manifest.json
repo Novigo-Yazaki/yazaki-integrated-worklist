@@ -1,0 +1,183 @@
+{
+    "_version": "1.40.0",
+    "sap.app": {
+        "id": "com.yazaki.yazakisupload",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.7.3",
+            "toolsId": "13b492a4-7be9-4592-89bb-282caa297968"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/yzkna/TM_FWO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "com-yazaki-yazakisupload-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "fwo",
+                    "action": "create",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.106.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.yazaki.yazakisupload.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "disableHeadRequestForToken": false,
+					"tokenHandling": true,
+					"useBatch": false,
+                    "sequentializeRequests": true
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.yazaki.yazakisupload.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                  "pattern": "",
+                  "name": "worklist",
+                  "target": [
+                    "worklist"
+                  ]
+                },
+                {
+                  "pattern": "xYZKNAxTM_V_FWOHEAD_C/{objectId}",
+                  "name": "object",
+                  "target": [
+                    "object"
+                  ]
+                },
+                {
+                  "pattern": "copy/{objectId}",
+                  "name": "copy",
+                  "target": [
+                    "Create"
+                  ]
+                },
+                {
+                  "pattern": "create",
+                  "name": "create",
+                  "target": [
+                    "Create"
+                  ]
+                }
+              ],
+              "targets": {
+                "worklist": {
+                  "viewName": "MainView",
+                  "viewId": "worklist",
+                  "viewLevel": 1,
+                  "title": "{i18n>worklistViewTitle}"
+                },
+                "object": {
+                  "viewName": "Object",
+                  "viewId": "object",
+                  "viewLevel": 2,
+                  "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                  "viewName": "ObjectNotFound",
+                  "viewId": "objectNotFound"
+                },
+                "notFound": {
+                  "viewName": "NotFound",
+                  "viewId": "notFound"
+                },
+                "Create": {
+                  "viewName": "Create",
+                  "viewId": "Create"
+                }
+              }
+        },
+        "rootView": {
+            "viewName": "com.yazaki.yazakisupload.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "com-yazaki-yazakisupload"
+    }
+}

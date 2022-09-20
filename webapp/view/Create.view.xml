@@ -1,0 +1,425 @@
+<mvc:View
+    controllerName="com.yazaki.yazakisupload.controller.Create"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:unified="sap.ui.unified"
+	xmlns:op="sap.uxap"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:t="sap.ui.table" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable" xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <Page id="page" title="{i18n>Create}" navButtonTooltip="Back"  showNavButton="true" navButtonPress="onNavBack">
+		<headerContent>
+        <Image id="idCompanyLogo"
+            height="100%"
+            width="100%"
+            alt="Yazaki Logo"/>
+        </headerContent>
+		<op:ObjectPageLayout upperCaseAnchorBar="false" id="ObjectPageLayout"  >
+			<op:headerTitle>
+				<op:ObjectPageDynamicHeaderTitle visible="{createItem>/FWObject}">
+					<op:breadcrumbs>
+						<Breadcrumbs id="breadcrumbsId" currentLocationText="{createItem>/FWOHeader/trq_id}"  >
+							<Link text="Worklist"/>
+							<!-- <Link text="{createItem>/FWOHeader/trq_id}" press="handleLink2Press"/> -->
+						</Breadcrumbs>
+					</op:breadcrumbs>
+	
+					<op:expandedHeading>
+						<HBox>
+							<Title text="{createItem>/FWOHeader/trq_id}" wrapping="true"/>
+							<!-- <ObjectMarker type="Favorite" class="sapUiTinyMarginBegin"/> -->
+							<ObjectStatus
+								class="sapUiSmallMarginBegin sapUiSmallMarginBottom"
+								text="{createItem>/FWOHeader/fo_status}"
+								inverted="true"
+								icon="{path:'createItem>/FWOHeader/fo_status',formatter:'.formatFoStatus'}"
+								state="None" />
+								
+						</HBox>
+					</op:expandedHeading>
+	
+					<op:snappedHeading>
+						<FlexBox  fitContainer="true" alignItems="Center">
+						<Title text="{createItem>/FWOHeader/trq_id}" wrapping="true"/>
+							<ObjectStatus
+								class="sapUiSmallMarginBegin sapUiSmallMarginBottom"
+								text="{createItem>/FWOHeader/fo_status}"
+								inverted="true"
+								icon="{path:'createItem>/FWOHeader/fo_status',formatter:'.formatFoStatus'}"
+								state="None" />
+							</FlexBox>
+					</op:snappedHeading>
+					<op:expandedContent>
+					</op:expandedContent>
+					<op:snappedContent>
+					</op:snappedContent>
+					<op:snappedTitleOnMobile>
+					</op:snappedTitleOnMobile>
+				</op:ObjectPageDynamicHeaderTitle>
+			</op:headerTitle>
+			<op:headerContent>
+				<HeaderContainer id="headerContainer" scrollStep="200" showDividers="false" visible="{createItem>/FWObject}">
+					<HBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom" displayInline="true">
+						<Avatar src="sap-icon://shipping-status" class="sapUiMediumMarginEnd" displaySize="L"/>
+							<VBox class="sapUiLargeMarginBegin sapUiSmallMarginBottom">
+								<HBox class="sapUiTinyMarginBottom" renderType="Bare">
+									<Label text="Status :"></Label>
+									<Text text="{createItem>/FWOHeader/fo_status}"/>
+								</HBox>
+								<HBox class="sapUiTinyMarginBottom" renderType="Bare">
+									<Label text="Carrier :"></Label>
+									<Text text="{createItem>/FWOHeader/tsp_id}"/>
+								</HBox>
+							</VBox>
+							<VBox class="sapUiLargeMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+								<HBox class="sapUiTinyMarginBottom" renderType="Bare">
+									<Label text="Total Vol :"></Label>
+									<Text text="{createItem>/FWOHeader/gro_vol_val} {createItem>/FWOHeader/gro_vol_uni}"/>
+								</HBox>
+								<HBox class="sapUiTinyMarginBottom" renderType="Bare">
+									<Label text="Total Weight :"></Label>
+									<Text text="{createItem>/FWOHeader/gro_wei_val} {createItem>/FWOHeader/gro_wei_uni}"/>
+								</HBox>
+								<HBox class="sapUiTinyMarginBottom" renderType="Bare">
+									<Label text="Freight Order Number :"></Label>
+									<Text text="{createItem>/FWOHeader/fo_id}"/>
+								</HBox>
+							</VBox>
+							<VBox class="sapUiLargeMarginBegin sapUiSmallMarginEnd">
+								<HBox>
+									<Label text="TRS Planner Email :"></Label>
+									<Text text="{createItem>/FWOHeader/planner_email}"/>
+								</HBox>
+								<HBox>
+									<Label text="Truck Number :"></Label>
+									<Text text="{createItem>/FWOHeader/truck_number}"/>
+								</HBox>
+							</VBox>
+					</HBox>
+				</HeaderContainer>
+			</op:headerContent>
+			<op:sections>
+				<op:ObjectPageSection titleUppercase="true" id="goalsSection" title="Header">
+					<op:subSections>
+						<op:ObjectPageSubSection id="goalsSectionSS1">
+							<op:blocks>
+								<VBox class="sapUiSmallMargin">
+									<f:SimpleForm id="SimpleFormChange480_12120"
+										editable="true"
+										layout="ResponsiveGridLayout"
+										title=""
+										labelSpanXL="4"
+										labelSpanL="4"
+										labelSpanM="12"
+										labelSpanS="12"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="2"
+										columnsL="2"
+										columnsM="1"
+										singleContainerFullSize="false" >
+										<f:content>
+											<core:Title text="" />
+											<Label text="Source Location" visible="{=!${createItem>/FWObject}}"/>
+											<ComboBox enabled="{=!${createItem>/FWObject}}" id="idSourceLocation" visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>/FWOHeader/SourceLocation}" items="{
+													path: '/xYZKNAxTM_V_SRCLOC_C'
+												}" selectionChange="onSourceChange" editable="{createItem>/SourceEditable}">
+												<core:Item key="{descr40}" text="{descr40}" />
+											</ComboBox>
+											<Label text="Source Location"   visible="{createItem>/FWObject}"/>
+											<Text text="{createItem>/FWOHeader/SourceLocation}" visible="{createItem>/FWObject}"/>
+											<Label text="House/Street"></Label>
+											<Text text="{createItem>/FWOHeader/SourceHouseNum}/{createItem>/FWOHeader/SourceStreet}"/>
+											<Label text="City/Zip"></Label>
+											<Text text="{createItem>/FWOHeader/SourceCity}/{createItem>/FWOHeader/SourcePostalcode}"/>
+											<Label text="Region/Country"></Label>
+											<Text text="{createItem>/FWOHeader/SourceRegion}/{createItem>/FWOHeader/SourceCountry}"/>
+										
+											<core:Title text="" />
+											<Label text="Destination Location" required="true" visible="{=!${createItem>/FWObject}}"/>
+											<ComboBox enabled="{=!${createItem>/FWObject}}" id="idDestinationLocation" selectedKey="{createItem>/FWOHeader/DestinationLocation}" items="{
+												path: '/xYZKNAxTM_V_DESLOOK_C'
+											}" selectionChange="onDestinationChange" visible="{=!${createItem>/FWObject}}">
+											<core:Item key="{loc_desc}" text="{loc_desc}" />
+										</ComboBox>
+										<Label text="Destination Location"  visible="{createItem>/FWObject}"/>
+										<Text text="{createItem>/FWOHeader/DestinationLocation}" visible="{createItem>/FWObject}"></Text>
+										<Label text="House/Street"></Label>
+										<Text text="{createItem>/FWOHeader/DestinationHouseNum}/{createItem>/FWOHeader/DestinationStreet}"/>
+										<Label text="City/Zip"></Label>
+										<Text text="{createItem>/FWOHeader/DestinationCity}/{createItem>/FWOHeader/DestinationPostalcode}"/>
+										<Label text="Region/Country"></Label>
+										<Text text="{createItem>/FWOHeader/DestinationRegion}/{createItem>/FWOHeader/DestinationCountry}"/>
+										</f:content>
+									</f:SimpleForm>
+									<f:SimpleForm id="SimpleFormChange480_12120-2"
+										editable="true"
+										layout="ResponsiveGridLayout"
+										title=""
+										labelSpanXL="4"
+										labelSpanL="4"
+										labelSpanM="12"
+										labelSpanS="12"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="2"
+										columnsL="2"
+										columnsM="1"
+										singleContainerFullSize="false">
+										<f:content>
+											<Label text="Pick up Date" required="true" visible="{=!${createItem>/FWObject}}"/>
+											<DateTimePicker
+												id="DTP3"
+												displayFormat="short"
+												change=""
+												minDate="{createItem>/xYZKNAxTM_V_SRCLOC_C}"
+												dateValue="{createItem>/FWOHeader/PickupFromDatetime}" visible="{=!${createItem>/FWObject}}"
+												enabled="{=!${createItem>/FWObject}}"/>
+											<Label text="Pick up Date" required="true" visible="{createItem>/FWObject}"/>
+											<Text text="{= ${createItem>/FWOHeader/PickupFromDatetime} ?
+											${
+												path: 'createItem>/FWOHeader/PickupFromDatetime',
+												type: 'sap.ui.model.type.DateTime',
+												formatOptions: { style: 'medium' }
+											}
+										:''} {src_time_zone}" visible="{createItem>/FWObject}"></Text>
+										</f:content>
+									</f:SimpleForm>
+									<f:SimpleForm id="SimpleFormChange480_12120-3"
+										editable="true"
+										layout="ResponsiveGridLayout"
+										title=""
+										labelSpanXL="4"
+										labelSpanL="4"
+										labelSpanM="12"
+										labelSpanS="12"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="2"
+										columnsL="2"
+										columnsM="1"
+										singleContainerFullSize="false">
+										<f:content>
+											<core:Title text="" />
+											<Label text="Reference 1" visible="{=!${createItem>/FWObject}}" />
+											<Input value="" visible="{=!${createItem>/FWObject}}"/>
+											<Label text="Reference 2" visible="{=!${createItem>/FWObject}}" />
+											<Input value="" visible="{=!${createItem>/FWObject}}" />
+											<Label text="Reference 1" visible="{createItem>/FWObject}" />
+											<Text text="" visible="{createItem>/FWObject}"/>
+											<Label text="Reference 2" visible="{createItem>/FWObject}" />
+											<Text text="" visible="{createItem>/FWObject}" />
+											<core:Title text=""  />
+											<Label text="Reference 3" visible="{=!${createItem>/FWObject}}" />
+											<Input value="" visible="{=!${createItem>/FWObject}}" />
+											<Label text="Reference 4" visible="{=!${createItem>/FWObject}}" />
+											<Input value="" visible="{=!${createItem>/FWObject}}" />
+											<Label text="Reference 3" visible="{createItem>/FWObject}" />
+											<Text text="" visible="{createItem>/FWObject}" />
+											<Label text="Reference 4" visible="{createItem>/FWObject}" />
+											<Text text="" visible="{createItem>/FWObject}" />
+										</f:content>
+									</f:SimpleForm>
+									</VBox>
+							
+							</op:blocks>
+						</op:ObjectPageSubSection>
+					</op:subSections>
+				</op:ObjectPageSection>
+				<op:ObjectPageSection titleUppercase="false" id="goalsSection0" title="Items">
+					<op:subSections>
+						<op:ObjectPageSubSection id="goalsSectionSS10">
+							<op:blocks>
+								<Table inset="false" items="{createItem>/FWOItem}" mode="{=!${createItem>/FWObject}?'Delete':'None'}" delete="onDeleteRow">
+									<headerToolbar>
+										<OverflowToolbar visible="{=!${createItem>/FWObject}}">
+											<Label text="Insert Item" required="true" />
+											<ToolbarSpacer />
+											<Button icon="sap-icon://add" text="Add" press="onAddItem"/>
+										</OverflowToolbar>
+									</headerToolbar>
+									<columns>
+										<Column visible="false">
+											<Text text="ID"/>
+										</Column>
+										<Column>
+											<Text text="Item Description"/>
+										</Column>
+										<Column minScreenWidth="Tablet" demandPopin="true">
+											<Text text="QTY"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+											<Text text="UoM"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+											<Text text="Weight"/>
+										</Column>
+										<Column hAlign="End">
+											<Text text="UoM"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+											<Text text="Dims (L x W x H)"/>
+										</Column>
+										<Column hAlign="End">
+											<Text text="UoM"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+											<Text text="Volume"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+											<Text text="UoM"/>
+										</Column>
+										
+									</columns>
+									<items>
+										<ColumnListItem vAlign="Middle">
+											<cells>
+												<ObjectIdentifier text="{createItem>ItemDescr}"/>
+												<VBox >
+													<Input value="{createItem>ItemDescr}" visible="{=!${createItem>/FWObject}}"/>
+													<Text text="{createItem>ItemDescr}" visible="{createItem>/FWObject}"/>
+												</VBox>
+												<VBox >
+													<Input value="{createItem>Quantity}" visible="{=!${createItem>/FWObject}}"/>
+													<Text text="{createItem>Quantity}" visible="{createItem>/FWObject}"/>
+												</VBox>
+												<VBox >
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>QuantityUom}"
+														items="{
+															path: 'createItem>/quantityHelper'
+														}">
+															<core:Item key="{createItem>msehi}" text="{createItem>msehl}" />
+													</ComboBox>
+													<Text text="{createItem>QuantityUom}" visible="{createItem>/FWObject}"/>
+												</VBox>
+												<VBox >
+													<Input value="{createItem>Weight}" visible="{=!${createItem>/FWObject}}"/>
+													<Text text="{createItem>Weight}" visible="{createItem>/FWObject}"/>
+												</VBox>
+												<VBox >
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>WeightUom}"
+														items="{
+															path: 'createItem>/weightHelper'
+														}">
+															<core:Item key="{createItem>msehi}" text="{createItem>msehl}" />
+													</ComboBox>
+													<Text text="{createItem>WeightUom}" visible="{createItem>/FWObject}"/>
+												</VBox>
+												<VBox >
+													<HBox visible="{=!${createItem>/FWObject}}" >
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Length}" class="sapUiTinyMarginEnd"/>
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Width}" class="sapUiTinyMarginEnd"/>
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Height}"/>
+													</HBox>
+													<Text text="{createItem>Length} {createItem>Width} {createItem>Height}" visible="{createItem>/FWObject}" />
+												</VBox>
+												<VBox >
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>DimUom}"
+														items="{
+															path: 'createItem>/dimensionsHelper'
+														}">
+															<core:Item key="{createItem>msehi}" text="{createItem>msehl}" />
+													</ComboBox>
+													<Text text="{createItem>DimUom}" visible="{createItem>/FWObject}"/>
+												</VBox>
+												<VBox >
+													<Input visible="{=!${createItem>/FWObject}}" value="{createItem>Volume}"/>
+													<Text visible="{createItem>/FWObject}" text="{createItem>Volume}"/>
+												</VBox>
+												<VBox>
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>VolumeUom}" 
+														items="{
+															path: 'createItem>/volumeHelper'
+														}">
+															<core:Item key="{createItem>msehi}" text="{createItem>msehl}" />
+													</ComboBox>
+													<Text text="{createItem>VolumeUom}" visible="{createItem>/FWObject}" />
+												</VBox>
+												
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</op:blocks>
+						</op:ObjectPageSubSection>
+					</op:subSections>
+				</op:ObjectPageSection>
+				<op:ObjectPageSection titleUppercase="false" id="goalsSection1" title="Attachment">
+					<op:subSections>
+						<op:ObjectPageSubSection id="goalsSectionSS11">
+							<op:blocks>
+								<Table id="idAttachmentsTable" inset="false" items="{createItem>/FwoHdrToAttachment}" mode="Delete" delete="onDeleteAtt">
+								<headerToolbar>
+									<OverflowToolbar >
+										<ToolbarSpacer/>
+										<unified:FileUploader icon="sap-icon://add"  class="sapUiTinyMarginBegin" id="idTemplateUploader" width="auto" buttonText="{i18n>Add}" style="Emphasized"  enabled="true"
+									iconFirst="true" uploadOnChange="true" multiple="false" maximumFileSize="" fileSizeExceed="onFileSizeExceed" sameFilenameAllowed="true"
+									buttonOnly="true"
+									mimeType="application/pdf,image/png,image/jpeg"
+									change="onUploadChange" >
+								</unified:FileUploader>
+									</OverflowToolbar>
+								</headerToolbar> 
+								 <columns>
+									<Column width="12em">
+										<Text text="Type"/>
+									</Column>
+									<Column >
+										<Text text="Created By"/>
+									</Column>
+									<Column >
+										<Text text="Created On"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="Name"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<ObjectIdentifier text="{createItem>AttachmentType}"/>
+											<Text text="{createItem>created_by}"/>
+											<Text text="{= ${createItem>created_on_dt} ?
+											${
+												path: 'createItem>created_on_dt',
+												type: 'sap.ui.model.type.Date',
+												formatOptions: { style: 'medium' }
+											}
+										:''}"/>
+											<Link text="{createItem>AlternativeName}"  press="onLinkPress"/>	
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							</op:blocks>
+						</op:ObjectPageSubSection>
+					</op:subSections>
+				</op:ObjectPageSection>
+			</op:sections>
+		</op:ObjectPageLayout>
+        <footer>
+			<Toolbar >
+				<ToolbarSpacer/>
+                <Button text="Save" visible="{=!${createItem>/FWObject}}" type="Emphasized" press="onSavePress"/>
+                <Button text="Update" visible="{createItem>/FWObject}" type="Emphasized" press="onUpdatePress"/>
+                <Button text="Cancel" visible="{=!${createItem>/FWObject}}" type="Reject" press="onNavBack"/>
+			</Toolbar>
+		</footer>
+		
+	
+    </Page>
+
+</mvc:View>

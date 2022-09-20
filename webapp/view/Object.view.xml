@@ -1,0 +1,151 @@
+<mvc:View id="page" controllerName="com.yazaki.yazakisupload.controller.Object" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout" xmlns:m="sap.m" xmlns:objpage="novigo.dev.load.worklist.loadsworklist.objectpage">
+	<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" >
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+                <breadcrumbs>
+                    <m:Button icon="sap-icon://nav-back" press="onNavBack"/>
+                </breadcrumbs>
+				<expandedHeading> 
+					<m:HBox>
+					</m:HBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Title text="{trq_id}" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<snappedContent>
+					<m:Text text="{des_loc_des}" wrapping="true"/>
+				</snappedContent>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				<layout:VerticalLayout class="sapUiLargeMarginBeginEnd">
+					<m:ObjectStatus title="Forwarding Order" text="{trq_id}"/>
+					<m:ObjectStatus title="Destination Location" text="{des_loc_des}"/>
+					<m:ObjectStatus title="Pick up date/Time"
+						text="{= ${pickup_dt} ? ${ path: 'pickup_dt', type: 'sap.ui.model.type.DateTime', formatOptions: { style: 'medium' } } :''}"/>
+					<m:ObjectStatus title="Status" text="{fo_status}"/>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginBeginEnd">
+					<m:ObjectStatus title="Carrier" text="{tsp_id}"/>
+					<m:ObjectStatus title="Total QTY" text="{qua_pcs_val} {qua_pcs_uni}"/>
+					<m:ObjectStatus title="Total Vol" text="{gro_vol_val} {gro_vol_uni}"/>
+					<m:ObjectStatus title="Total Weight" text="{gro_wei_val} {gro_wei_uni}"/>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginBeginEnd" id="dynamicStatus">
+					<m:ObjectStatus title="Freight Order Number" text="{fo_id}"/>
+					<m:ObjectStatus title="Truck Number" text="{truck_number}"/>
+					<m:ObjectStatus title="TRS Planner Email" text="{planner_email}"/>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection titleUppercase="false" id="goalsSection" title="ItemInfo">
+				<subSections>
+					<ObjectPageSubSection id="goalsSectionSS1">
+						<blocks>
+							<m:Table id="idProductsTable" inset="false" items="{ path: 'to_item' }">
+								<m:headerToolbar>
+									<m:OverflowToolbar>
+										<m:content></m:content>
+									</m:OverflowToolbar>
+								</m:headerToolbar>
+								<m:columns>
+									<m:Column width="12em">
+										<m:Text text="Item Description"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Quantity"/>
+									</m:Column>
+									<m:Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+										<m:Text text="UoM"/>
+									</m:Column>
+									<m:Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+										<m:Text text="Weight"/>
+									</m:Column>
+									<m:Column hAlign="End">
+										<m:Text text="UoM"/>
+									</m:Column>
+									<m:Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+										<m:Text text="Volume"/>
+									</m:Column>
+									<m:Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+										<m:Text text="UoM"/>
+									</m:Column>
+									<m:Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+										<m:Text text="Dimensions"/>
+									</m:Column>
+									<m:Column hAlign="End">
+										<m:Text text="UoM"/>
+									</m:Column>
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem vAlign="Middle">
+										<m:cells>
+											<m:ObjectIdentifier text="{item_descr}"/>
+											<m:Text text="{qua_pcs_val}"/>
+											<m:Text text="{qua_pcs_uni}"/>
+											<m:Text text="{gro_wei_val}"/>
+											<m:Text text="{gro_wei_uni}"/>
+											<m:Text text="{gro_vol_val}"/>
+											<m:Text text="{gro_vol_uni}"/>
+											<m:Text text="{length} x {width} x {height}"/>
+											<m:Text text="{measuom}"/>
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+							<!-- <ObjectPageSubSection id="goalsSectionSS1">
+						<blocks>
+							<objpage:CompanyDetails id="goalsblock1"/> -->
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" id="goalsSection4" title="Attachments">
+				<subSections>
+					<ObjectPageSubSection id="goalsSectionSS2">
+						<blocks>
+							<m:Table id="idAttachmentsTable" inset="false" items="{ path: 'to_atta' }">
+								<m:headerToolbar>
+									<m:OverflowToolbar>
+										<m:content></m:content>
+									</m:OverflowToolbar>
+								</m:headerToolbar> 
+								 <m:columns>
+									<m:Column width="12em">
+										<m:Text text="Type"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Name"/>
+									</m:Column>
+									
+									
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem vAlign="Middle">
+										<m:cells>
+											<m:ObjectIdentifier text="{mimecode}"/>
+											<m:Link text="{alternative_name}" press="onLinkPress"/>
+											
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		<footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer/>
+				<m:Button type="Accept" text="Save" press="onSave"/>
+				<m:Button type="Reject" text="Reject"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+</mvc:View>

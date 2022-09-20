@@ -1,0 +1,194 @@
+<mvc:View controllerName="com.yazaki.yazakisupload.controller.MainView" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:t="sap.ui.table" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:fb="sap.ui.comp.filterbar" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+  <Page id="page" title="{i18n>worklistTitle}" navButtonTooltip="Back">
+    <headerContent>
+      <Image id="idCompanyLogo"
+          height="100%"
+          width="100%"
+          alt="Yazaki Logo"/>
+
+    </headerContent>
+    <smartFilterBar:SmartFilterBar id="smartFilterBar" initialized="onSFBInitialized" considerSelectionVariants="false" filterContainerWidth="14rem" entitySet="xYZKNAxTM_V_FWOHEAD_C" showFilterConfiguration="false" showClearButton="false">
+      <smartFilterBar:controlConfiguration>
+        <smartFilterBar:ControlConfiguration index="0" key="trq_id" label="Load Number" visibleInAdvancedArea="true">
+          <smartFilterBar:customControl>
+            <Input id="idForwardingOrder" showSuggestion="true" suggest=".onSuggest" suggestionItems="{/xYZKNAxTM_V_FWOHEAD_C}">
+              <suggestionItems>
+                <core:Item text="{trq_id}" />
+              </suggestionItems>
+            </Input>
+          </smartFilterBar:customControl>
+        </smartFilterBar:ControlConfiguration>
+
+        <smartFilterBar:ControlConfiguration index="1" key="tsp_id" label="Pick-up Date" visibleInAdvancedArea="true">
+          <smartFilterBar:customControl>
+            <DateRangeSelection id="DRS2" placeholder="MM/DD/YYYY - MM/DD/YYYY" />
+          </smartFilterBar:customControl>
+        </smartFilterBar:ControlConfiguration>
+
+        <smartFilterBar:ControlConfiguration index="2" key="des_loc_des" label="Destination location" visibleInAdvancedArea="true">
+          <smartFilterBar:customControl>
+            <Input id="idFilterDestinationLocation" showSuggestion="true" suggestionItems="{/xYZKNAxTM_V_DESLOOK_C}" suggest=".onDesSuggest">
+              <suggestionItems>
+                <core:Item text="{loc_desc}" />
+              </suggestionItems>
+            </Input>
+          </smartFilterBar:customControl>
+        </smartFilterBar:ControlConfiguration>
+      </smartFilterBar:controlConfiguration>
+      <smartFilterBar:layoutData>
+        <FlexItemData shrinkFactor="0" />
+      </smartFilterBar:layoutData>
+    </smartFilterBar:SmartFilterBar>
+    <Title text="Status" class="sapUiTinyMargin" />
+    <IconTabBar id="idIconTabBar" select="onFilterSelect" class="sapUiResponsiveContentPadding">
+      <items>
+        <IconTabFilter showAll="true" text="All" key="All" tooltip="All" />
+        <IconTabSeparator />
+
+      </items>
+    </IconTabBar>
+    <smartTable:SmartTable id="smartTable" entitySet="xYZKNAxTM_V_FWOHEAD_C" smartFilterId="smartFilterBar" useExportToExcel="true" useVariantManagement="false" showTablePersonalisation="false" useTablePersonalisation="true" header="Loads Number" showRowCount="true" enableAutoBinding="true" tableType="ResponsiveTable" enableAutoColumnWidth="true" showVariantManagement="false" beforeRebindTable="onBeforeRebindingTable" demandPopin="true" app:useSmartToggle="true">
+      <smartTable:customToolbar>
+        <OverflowToolbar design="Transparent">
+          <ToolbarSpacer />
+          <Button text="Create" icon="sap-icon://add" press="onAddWorklist" />
+          <Button text="Copy" icon="sap-icon://copy" press="onCopyWorklist" />
+        </OverflowToolbar>
+      </smartTable:customToolbar>
+      <Table id="idWorkListTable" noDataText="No Data Found" itemPress="onPress" fixedLayout="false" mode="SingleSelectLeft" growing="true" growingScrollToLoad="true">
+        <columns>
+          <Column hAlign="Begin">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "trq_id", "leadingProperty": "trq_id", "sortProperty": "trq_id",  "displayBehaviour": "descriptionOnly", "width": "360px"}' />
+            </customData>
+            <Label text="Load Number" />
+          </Column>
+
+          <Column hAlign="Begin">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "pickup_dt", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "pickup_dt", "sortProperty": "pickup_dt"}' />
+            </customData>
+            <Label text="Pick up date/Time" />
+          </Column>
+          <Column hAlign="Begin">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "del_dt", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "del_dt", "sortProperty": "del_dt"}' />
+            </customData>
+            <Label text="Delivery date/Time" />
+          </Column>
+          <Column hAlign="Begin">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "des_loc_des", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "des_loc_des", "sortProperty": "des_loc_des", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="Destination Location" />
+          </Column>
+          <Column hAlign="Begin" demandPopin="true">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "fo_status", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "fo_status", "sortProperty": "fo_status", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="Status" />
+          </Column>
+          <Column hAlign="Begin" demandPopin="true" minScreenWidth="Large">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "tsp_id", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "tsp_id", "sortProperty": "tsp_id", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="Carrier" />
+          </Column>
+          <Column hAlign="Begin" demandPopin="true" minScreenWidth="Large">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "qua_pcs_val", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "qua_pcs_val", "sortProperty": "qua_pcs_val", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="Quantity" />
+          </Column>
+          <Column hAlign="Begin" demandPopin="true" minScreenWidth="Large">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "gro_vol_val", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "gro_vol_val", "sortProperty": "gro_vol_val", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="Volume" />
+          </Column>
+          <Column hAlign="Begin" demandPopin="true" minScreenWidth="Large">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "gro_wei_val", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "gro_wei_val", "sortProperty": "gro_wei_val", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="Weight" />
+          </Column>
+          <Column hAlign="Begin" demandPopin="true" minScreenWidth="Large">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "fo_id", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "fo_id", "sortProperty": "fo_id", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="BOL Number" />
+          </Column>
+          <Column hAlign="Begin" demandPopin="true">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "truck_number", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "truck_number", "sortProperty": "truck_number", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="Truck number" />
+          </Column>
+          <Column hAlign="Begin" demandPopin="true">
+            <customData>
+              <core:CustomData key="p13nData" value='\{"columnKey": "planner_email", "autoColumnWidth": true, "maxLength": 5, "isCurrency": true, "leadingProperty": "planner_email", "sortProperty": "planner_email", "type": "numeric", "unit": "Hwaer"}' />
+            </customData>
+            <Label text="TRS Planner email" />
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem type="Active">
+            <cells>
+              <Link text="{trq_id}" press="onPress" />
+            </cells>
+
+            <cells>
+              <Text id="idPickupDate" text="{= ${pickup_dt} ?
+                        ${
+                            path: 'pickup_dt',
+                            type: 'sap.ui.model.type.DateTime',
+                            formatOptions: { style: 'medium' }
+                        }
+                    :''} {src_time_zone}" />
+            </cells>
+            <cells>
+              <Text id="idDelivaryDate" text="{= ${del_dt} ?
+                        ${
+                            path: 'del_dt',
+                            type: 'sap.ui.model.type.DateTime',
+                            formatOptions: { style: 'medium' }
+                        }
+                    :''} {des_time_zone}" />
+            </cells>
+            <cells>
+              <Text text="{des_loc_des}" />
+            </cells>
+            <cells>
+              <ObjectStatus text="{fo_status}" icon="{path:'fo_status', formatter: '.formatter.formatIcon'}" state="{=${fo_status}==='Not Planned'?'Warning':'None'}" />
+            </cells>
+            <cells>
+              <Text text="{carr_name}" />
+            </cells>
+            <cells>
+              <Text text="{qua_pcs_val} {qua_pcs_uni}" />
+            </cells>
+            <cells>
+              <Text text="{gro_vol_val} {gro_vol_uni}" />
+            </cells>
+            <cells>
+              <Text text="{gro_wei_val} {gro_wei_uni}" />
+            </cells>
+            <cells>
+              <Text text="{fo_id}" />
+            </cells>
+            <cells>
+              <Text text="{truck_number}" />
+            </cells>
+            <cells>
+              <Text text="{planner_email}" />
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+      <smartTable:layoutData>
+        <FlexItemData growFactor="1" baseSize="0%" />
+      </smartTable:layoutData>
+    </smartTable:SmartTable>
+  </Page>
+
+</mvc:View>

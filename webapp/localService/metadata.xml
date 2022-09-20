@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="TM_FWO_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="FWOHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FwoNum"/>
+                </Key>
+                <Property Name="BpGuid" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="NodeID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FwoNum" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mot" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Transp. Mode" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MovemType" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Movement Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShippingType" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Shipping Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesOrgId" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Sales Org." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderPartyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sold-to Party" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipperId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Shipper" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipperName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipperAddr1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipperAddr2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipperCity" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipperState" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Region" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipperCountry" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country/Reg." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShipperZip" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ConsigneeId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Ship-to Party" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ConsigneeName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ConsigneeAddr1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ConsigneeAddr2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ConsigneeCity" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ConsigneeState" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Region" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ConsigneeCountry" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country/Reg." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ConsigneeZip" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceHouseNum" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceStreet" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceCity" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourcePostalcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceRegion" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Region" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceCountry" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country/Reg." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DestinationLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DestinationHouseNum" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="House Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DestinationStreet" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DestinationCity" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DestinationPostalcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DestinationRegion" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Region" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DestinationCountry" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country/Reg." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PickupFromDatetime" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PickupToDatetime" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PickupTimezone" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Time Zone" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryFromDatetime" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryToDatetime" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryTimezone" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Time Zone" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="FwoHdrToItem" Relationship="TM_FWO_SRV.Asso_FwoHdrToItem" FromRole="FromRole_Asso_FwoHdrToItem" ToRole="ToRole_Asso_FwoHdrToItem"/>
+                <NavigationProperty Name="FwoHdrToAttachment" Relationship="TM_FWO_SRV.Asso_FwoHdrToAttachment" FromRole="FromRole_Asso_FwoHdrToAttachment" ToRole="ToRole_Asso_FwoHdrToAttachment"/>
+            </EntityType>
+            <EntityType Name="FWOItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FwoNum"/>
+                </Key>
+                <Property Name="FwoNum" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemType" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Item Category" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PackageId" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Package ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemDescr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Item Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:unit="QuantityUom" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuantityUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Quantity UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Weight" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:unit="WeightUom" sap:label="Gross Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WeightUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Gr. Wt UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Volume" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:unit="VolumeUom" sap:label="Gross Volume" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VolumeUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Gross Vol. UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Length" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="DimUom" sap:label="Length" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Width" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="DimUom" sap:label="Width" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Height" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="DimUom" sap:label="Height" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DimUom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Unit of Measure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Index" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Table Row" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="FWOAttachment" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FwoNum"/>
+                </Key>
+                <Property Name="FwoNum" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocKey" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Attachment Folder Object ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Component name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AlternativeName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Component name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="64" sap:unicode="false" sap:label="Title" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FilesizeContent" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Size/dim." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Folder" Type="Edm.String" Nullable="false" MaxLength="64" sap:unicode="false" sap:label="Title" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MimeCode" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="MIME type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AttachmentType" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="MIME type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AttachmentContent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Content" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_DESLOOK_CType" sap:label="Destination Location Lookup" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="loc_name"/>
+                </Key>
+                <Property Name="loc_name" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Schedule"/>
+                <Property Name="loc_desc" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Schedule Description"/>
+                <Property Name="house_num_street" Type="Edm.String" MaxLength="73"/>
+                <Property Name="city_zip" Type="Edm.String" MaxLength="53"/>
+                <Property Name="region_country" Type="Edm.String" MaxLength="9"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_FWOATTA_CType" sap:label="Forwarding Order Attachment Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="trq_id"/>
+                    <PropertyRef Name="host_key"/>
+                    <PropertyRef Name="doc_key"/>
+                </Key>
+                <Property Name="trq_id" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Document" sap:quickinfo="ID of Forwarding Order/Quotation or Trsp. Reqt"/>
+                <Property Name="host_key" Type="Edm.Guid" Nullable="false" sap:label="NodeID" sap:heading=""/>
+                <Property Name="doc_key" Type="Edm.String" Nullable="false" MaxLength="32" sap:display-format="UpperCase" sap:label="Attachment Folder Object ID" sap:heading=""/>
+                <Property Name="mimecode" Type="Edm.String" MaxLength="128" sap:label="MIME type" sap:quickinfo="HTML content type"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255" sap:label="Component name" sap:quickinfo="Relative storage location of physical document"/>
+                <Property Name="alternative_name" Type="Edm.String" MaxLength="255" sap:label="Component name" sap:quickinfo="Relative storage location of physical document"/>
+                <Property Name="description" Type="Edm.String" MaxLength="64" sap:label="Title" sap:quickinfo="Title of a document"/>
+                <Property Name="filesize_content" Type="Edm.String" MaxLength="12" sap:display-format="NonNegative" sap:label="Component size" sap:quickinfo="File size (in bytes)"/>
+                <Property Name="created_on_dt" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="created_on_tm" Type="Edm.Time" Precision="0"/>
+                <Property Name="created_by" Type="Edm.String" MaxLength="80" sap:label="Full Name" sap:quickinfo="Full Name of Person"/>
+                <Property Name="folder" Type="Edm.String" MaxLength="64" sap:label="Title" sap:quickinfo="Title of a document"/>
+                <Property Name="attachment_type" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Attachment Type"/>
+                <NavigationProperty Name="to_root" Relationship="TM_FWO_SRV.assoc_CC6A56C12F6660FE5983B266EA144FC6" FromRole="ToRole_assoc_CC6A56C12F6660FE5983B266EA144FC6" ToRole="FromRole_assoc_CC6A56C12F6660FE5983B266EA144FC6"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_FWOHEAD_CType" sap:label="Forwarding Order Root Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="db_key"/>
+                </Key>
+                <Property Name="db_key" Type="Edm.Guid" Nullable="false" sap:label="NodeID" sap:heading=""/>
+                <Property Name="trq_id" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Forwarding Order Number" sap:quickinfo="ID of Forwarding Order/Quotation or Trsp. Reqt"/>
+                <Property Name="tsp_id" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Carrier ID" sap:quickinfo="Carrier"/>
+                <Property Name="carr_name" Type="Edm.String" MaxLength="40" sap:label="Carrier Name" sap:quickinfo="Name 1"/>
+                <Property Name="tsp_scac" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Carrier SCAC" sap:quickinfo="Standard Carrier Alpha Code"/>
+                <Property Name="planner_email" Type="Edm.String" MaxLength="241" sap:label="Planner Email ID" sap:quickinfo="E-Mail Address"/>
+                <Property Name="src_loc_id" Type="Edm.String" MaxLength="20" sap:label="Source Location ID" sap:quickinfo="Source Location"/>
+                <Property Name="src_loc_des" Type="Edm.String" MaxLength="40" sap:label="Source Location" sap:quickinfo="Location Description"/>
+                <Property Name="src_adrnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Source Location Address Number" sap:quickinfo="Address Number"/>
+                <Property Name="src_name" Type="Edm.String" MaxLength="40" sap:label="Source Location Name" sap:quickinfo="Name 1"/>
+                <Property Name="src_house_num" Type="Edm.String" MaxLength="10" sap:label="Source House Number" sap:quickinfo="House Number"/>
+                <Property Name="src_street" Type="Edm.String" MaxLength="60" sap:label="Source Location Street" sap:quickinfo="Street"/>
+                <Property Name="src_city" Type="Edm.String" MaxLength="40" sap:label="Source Location City" sap:quickinfo="City"/>
+                <Property Name="src_postal_code" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Source Location Postal Code" sap:quickinfo="City postal code"/>
+                <Property Name="src_region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Source Location Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="src_country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Source Location Country" sap:quickinfo="Country/Region Key"/>
+                <Property Name="src_time_zone" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Source Location Time zone" sap:quickinfo="Address time zone"/>
+                <Property Name="des_loc_id" Type="Edm.String" MaxLength="20" sap:label="Destination Location ID" sap:quickinfo="Destination Location"/>
+                <Property Name="des_loc_des" Type="Edm.String" MaxLength="40" sap:label="Destination Location" sap:quickinfo="Location Description"/>
+                <Property Name="des_adrnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Destination Location Address Number" sap:quickinfo="Address Number"/>
+                <Property Name="des_name" Type="Edm.String" MaxLength="40" sap:label="Destination Location Name" sap:quickinfo="Name 1"/>
+                <Property Name="des_house_num" Type="Edm.String" MaxLength="10" sap:label="Destination House Number" sap:quickinfo="House Number"/>
+                <Property Name="des_street" Type="Edm.String" MaxLength="60" sap:label="Destination Location Street" sap:quickinfo="Street"/>
+                <Property Name="des_city" Type="Edm.String" MaxLength="40" sap:label="Destination Location City" sap:quickinfo="City"/>
+                <Property Name="des_postal_code" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Destination Location Postal Code" sap:quickinfo="City postal code"/>
+                <Property Name="des_region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Destination Location Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="des_country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Destination Location Country" sap:quickinfo="Country/Region Key"/>
+                <Property Name="des_time_zone" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Destination Location Timezone" sap:quickinfo="Address time zone"/>
+                <Property Name="pickup_tstmp" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="Pickup Date Timestamp" sap:quickinfo="Pick-Up (From)"/>
+                <Property Name="pickup_dt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pickup Date"/>
+                <Property Name="pickup_tm" Type="Edm.Time" Precision="0" sap:label="Pickup Time"/>
+                <Property Name="del_tstmp" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="Delivery Date Timstamp" sap:quickinfo="Delivery (To)"/>
+                <Property Name="del_dt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Delivery Date"/>
+                <Property Name="del_tm" Type="Edm.Time" Precision="0" sap:label="Delivery Time"/>
+                <Property Name="qua_pcs_val" Type="Edm.Decimal" Precision="31" Scale="2" sap:unit="qua_pcs_uni" sap:label="Quantity"/>
+                <Property Name="qua_pcs_uni" Type="Edm.String" MaxLength="3" sap:label="Quantity Unit" sap:quickinfo="Quantity Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="gro_wei_val" Type="Edm.Decimal" Precision="31" Scale="2" sap:unit="gro_wei_uni" sap:label="Gross Weight"/>
+                <Property Name="gro_wei_uni" Type="Edm.String" MaxLength="3" sap:label="Gross Weight Unit" sap:quickinfo="Gross Weight Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="gro_vol_val" Type="Edm.Decimal" Precision="31" Scale="2" sap:unit="gro_vol_uni" sap:label="Gross Volume"/>
+                <Property Name="gro_vol_uni" Type="Edm.String" MaxLength="3" sap:label="Gross Volume Unit" sap:quickinfo="Gross Volume Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="def_route" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Default Route Name" sap:quickinfo="Schedule"/>
+                <Property Name="def_route_description" Type="Edm.String" MaxLength="40" sap:label="Default Route Description" sap:quickinfo="Schedule Description"/>
+                <Property Name="fo_id" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Freight Order ID" sap:quickinfo="Document"/>
+                <Property Name="fo_status" Type="Edm.String" MaxLength="24" sap:label="Freight Order Subcontracting Status"/>
+                <Property Name="truck_number" Type="Edm.String" MaxLength="60" sap:label="Truck Number" sap:quickinfo="Short Description"/>
+                <Property Name="sobid" Type="Edm.String" MaxLength="45" sap:display-format="UpperCase" sap:label="ID rel.object" sap:quickinfo="ID of Related Object"/>
+                <NavigationProperty Name="to_atta" Relationship="TM_FWO_SRV.assoc_CC6A56C12F6660FE5983B266EA144FC6" FromRole="FromRole_assoc_CC6A56C12F6660FE5983B266EA144FC6" ToRole="ToRole_assoc_CC6A56C12F6660FE5983B266EA144FC6"/>
+                <NavigationProperty Name="to_item" Relationship="TM_FWO_SRV.assoc_59BC56674648E570DE7A856EC9B149D6" FromRole="FromRole_assoc_59BC56674648E570DE7A856EC9B149D6" ToRole="ToRole_assoc_59BC56674648E570DE7A856EC9B149D6"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_FWOITEM_CType" sap:label="Forwarding Order Item Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="db_key"/>
+                    <PropertyRef Name="parent_key"/>
+                </Key>
+                <Property Name="db_key" Type="Edm.Guid" Nullable="false" sap:label="NodeID" sap:heading=""/>
+                <Property Name="parent_key" Type="Edm.Guid" Nullable="false" sap:label="NodeID" sap:heading=""/>
+                <Property Name="item_id" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Item ID" sap:quickinfo="Item"/>
+                <Property Name="product_id" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Product ID" sap:quickinfo="Product"/>
+                <Property Name="qua_pcs_val" Type="Edm.Decimal" Precision="31" Scale="2" sap:unit="qua_pcs_uni" sap:label="Quantity"/>
+                <Property Name="qua_pcs_uni" Type="Edm.String" MaxLength="3" sap:label="Quantity Unit" sap:quickinfo="Quantity Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="gro_wei_val" Type="Edm.Decimal" Precision="31" Scale="2" sap:unit="gro_wei_uni" sap:label="Weight"/>
+                <Property Name="gro_wei_uni" Type="Edm.String" MaxLength="3" sap:label="Weight Unit" sap:quickinfo="Gross Weight Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="gro_vol_val" Type="Edm.Decimal" Precision="31" Scale="2" sap:unit="gro_vol_uni" sap:label="Volume"/>
+                <Property Name="gro_vol_uni" Type="Edm.String" MaxLength="3" sap:label="Volume Unit" sap:quickinfo="Gross Volume Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="length" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Length"/>
+                <Property Name="width" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Width"/>
+                <Property Name="height" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Height"/>
+                <Property Name="measuom" Type="Edm.String" MaxLength="3" sap:label="Measure UoM" sap:quickinfo="Unit of measure for length, width and height" sap:semantics="unit-of-measure"/>
+                <NavigationProperty Name="to_root" Relationship="TM_FWO_SRV.assoc_59BC56674648E570DE7A856EC9B149D6" FromRole="ToRole_assoc_59BC56674648E570DE7A856EC9B149D6" ToRole="FromRole_assoc_59BC56674648E570DE7A856EC9B149D6"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_MEASLOOK_CType" sap:label="Weight UoM Search help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="msehi"/>
+                </Key>
+                <Property Name="msehi" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="mseht" Type="Edm.String" MaxLength="10" sap:label="Measuremt unit text" sap:quickinfo="Unit of Measurement Text (Maximum 10 Characters)"/>
+                <Property Name="msehl" Type="Edm.String" MaxLength="30" sap:label="UoM Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_QUALOOK_CType" sap:label="Quantity UoM Search Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="msehi"/>
+                </Key>
+                <Property Name="msehi" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="mseht" Type="Edm.String" MaxLength="10" sap:label="Measuremt unit text" sap:quickinfo="Unit of Measurement Text (Maximum 10 Characters)"/>
+                <Property Name="msehl" Type="Edm.String" MaxLength="30" sap:label="UoM Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_SRCLOC_CType" sap:label="Source Location Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="locno"/>
+                </Key>
+                <Property Name="locno" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Location"/>
+                <Property Name="descr40" Type="Edm.String" MaxLength="40" sap:label="Loc. Description" sap:quickinfo="Location Description"/>
+                <Property Name="house_num_street" Type="Edm.String" MaxLength="73"/>
+                <Property Name="city_zip" Type="Edm.String" MaxLength="53"/>
+                <Property Name="region_country" Type="Edm.String" MaxLength="9"/>
+                <Property Name="pickup_cutoff_date" Type="Edm.String" MaxLength="10"/>
+                <Property Name="sobid" Type="Edm.String" MaxLength="45" sap:display-format="UpperCase" sap:label="ID rel.object" sap:quickinfo="ID of Related Object"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_STATLOOK_CType" sap:label="Status Look Up" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="subcontr_status"/>
+                </Key>
+                <Property Name="subcontr_status" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Subcontr. Status" sap:quickinfo="Subcontracting Status"/>
+                <Property Name="critical_code" Type="Edm.String" MaxLength="10"/>
+                <Property Name="status_icon" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Icon name"/>
+                <Property Name="status_text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_VOLLOOK_CType" sap:label="Volume UoM Search help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="msehi"/>
+                </Key>
+                <Property Name="msehi" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="mseht" Type="Edm.String" MaxLength="10" sap:label="Measuremt unit text" sap:quickinfo="Unit of Measurement Text (Maximum 10 Characters)"/>
+                <Property Name="msehl" Type="Edm.String" MaxLength="30" sap:label="UoM Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)"/>
+            </EntityType>
+            <EntityType Name="xYZKNAxTM_V_WEILOOK_CType" sap:label="Weight UoM Search help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="msehi"/>
+                </Key>
+                <Property Name="msehi" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="mseht" Type="Edm.String" MaxLength="10" sap:label="Measuremt unit text" sap:quickinfo="Unit of Measurement Text (Maximum 10 Characters)"/>
+                <Property Name="msehl" Type="Edm.String" MaxLength="30" sap:label="UoM Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)"/>
+            </EntityType>
+            <Association Name="Asso_FwoHdrToAttachment" sap:content-version="1">
+                <End Type="TM_FWO_SRV.FWOHeader" Multiplicity="1" Role="FromRole_Asso_FwoHdrToAttachment"/>
+                <End Type="TM_FWO_SRV.FWOAttachment" Multiplicity="*" Role="ToRole_Asso_FwoHdrToAttachment"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_FwoHdrToAttachment">
+                        <PropertyRef Name="FwoNum"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_FwoHdrToAttachment">
+                        <PropertyRef Name="FwoNum"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Asso_FwoHdrToItem" sap:content-version="1">
+                <End Type="TM_FWO_SRV.FWOHeader" Multiplicity="1" Role="FromRole_Asso_FwoHdrToItem"/>
+                <End Type="TM_FWO_SRV.FWOItem" Multiplicity="*" Role="ToRole_Asso_FwoHdrToItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_FwoHdrToItem">
+                        <PropertyRef Name="FwoNum"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_FwoHdrToItem">
+                        <PropertyRef Name="FwoNum"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_59BC56674648E570DE7A856EC9B149D6" sap:content-version="1">
+                <End Type="TM_FWO_SRV.xYZKNAxTM_V_FWOHEAD_CType" Multiplicity="1" Role="FromRole_assoc_59BC56674648E570DE7A856EC9B149D6">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="TM_FWO_SRV.xYZKNAxTM_V_FWOITEM_CType" Multiplicity="*" Role="ToRole_assoc_59BC56674648E570DE7A856EC9B149D6"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_59BC56674648E570DE7A856EC9B149D6">
+                        <PropertyRef Name="db_key"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_59BC56674648E570DE7A856EC9B149D6">
+                        <PropertyRef Name="parent_key"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_CC6A56C12F6660FE5983B266EA144FC6" sap:content-version="1">
+                <End Type="TM_FWO_SRV.xYZKNAxTM_V_FWOHEAD_CType" Multiplicity="1" Role="FromRole_assoc_CC6A56C12F6660FE5983B266EA144FC6">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="TM_FWO_SRV.xYZKNAxTM_V_FWOATTA_CType" Multiplicity="*" Role="ToRole_assoc_CC6A56C12F6660FE5983B266EA144FC6"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_CC6A56C12F6660FE5983B266EA144FC6">
+                        <PropertyRef Name="db_key"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_CC6A56C12F6660FE5983B266EA144FC6">
+                        <PropertyRef Name="host_key"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="TM_FWO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="FWOHeaderSet" EntityType="TM_FWO_SRV.FWOHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="FWOItemSet" EntityType="TM_FWO_SRV.FWOItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="FWOAttachmentSet" EntityType="TM_FWO_SRV.FWOAttachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_DESLOOK_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_DESLOOK_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_FWOATTA_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_FWOATTA_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_FWOHEAD_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_FWOHEAD_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_FWOITEM_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_FWOITEM_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_MEASLOOK_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_MEASLOOK_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_QUALOOK_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_QUALOOK_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_SRCLOC_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_SRCLOC_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_STATLOOK_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_STATLOOK_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_VOLLOOK_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_VOLLOOK_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="xYZKNAxTM_V_WEILOOK_C" EntityType="TM_FWO_SRV.xYZKNAxTM_V_WEILOOK_CType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="Asso_FwoHdrToItemSet" Association="TM_FWO_SRV.Asso_FwoHdrToItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FWOHeaderSet" Role="FromRole_Asso_FwoHdrToItem"/>
+                    <End EntitySet="FWOItemSet" Role="ToRole_Asso_FwoHdrToItem"/>
+                </AssociationSet>
+                <AssociationSet Name="Asso_FwoHdrToAttachmentSet" Association="TM_FWO_SRV.Asso_FwoHdrToAttachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FWOHeaderSet" Role="FromRole_Asso_FwoHdrToAttachment"/>
+                    <End EntitySet="FWOAttachmentSet" Role="ToRole_Asso_FwoHdrToAttachment"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_59BC56674648E570DE7A856EC9B149D6" Association="TM_FWO_SRV.assoc_59BC56674648E570DE7A856EC9B149D6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xYZKNAxTM_V_FWOHEAD_C" Role="FromRole_assoc_59BC56674648E570DE7A856EC9B149D6"/>
+                    <End EntitySet="xYZKNAxTM_V_FWOITEM_C" Role="ToRole_assoc_59BC56674648E570DE7A856EC9B149D6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CC6A56C12F6660FE5983B266EA144FC6" Association="TM_FWO_SRV.assoc_CC6A56C12F6660FE5983B266EA144FC6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xYZKNAxTM_V_FWOHEAD_C" Role="FromRole_assoc_CC6A56C12F6660FE5983B266EA144FC6"/>
+                    <End EntitySet="xYZKNAxTM_V_FWOATTA_C" Role="ToRole_assoc_CC6A56C12F6660FE5983B266EA144FC6"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_xyzknaxtm_fwoget.cds_xyzknaxtm_fwoget_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <atom:link rel="self" href="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/yzkna/TM_FWO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://vhynatd1ci.sap.yazaki.com:8000/sap/opu/odata/yzkna/TM_FWO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

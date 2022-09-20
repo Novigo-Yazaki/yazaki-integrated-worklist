@@ -199,6 +199,12 @@ sap.ui.define(
                             if (oData) {
                                 const oDataHeader = {
                                     SourceLocation: oData.src_loc_des,
+                                    SourceHouseNum: oData.src_house_num,
+                                    SourceStreet: oData.src_street,
+                                    SourceCity: oData.src_city,
+                                    SourcePostalcode: oData.src_postal_code,
+                                    SourceRegion: oData.src_region,
+                                    SourceCountry: oData.src_country,
                                     PickupFromDatetime: oData.pickup_dt,
                                     DestinationLocation: oData.des_loc_des,
                                     DestinationCountry: oData.des_country,
@@ -225,7 +231,7 @@ sap.ui.define(
                                     for (let index = 0; index < oData.to_item.results.length; index++) {
                                         const element = oData.to_item.results[index];
                                         const oItem = that.getFWOItemData();
-                                        // oItem.ItemDescr="";
+                                        oItem.ItemDescr=element.item_descr;
                                         oItem.Quantity = element.qua_pcs_val;
                                         oItem.QuantityUom = element.qua_pcs_uni;
                                         oItem.Weight = element.gro_wei_val;
@@ -239,7 +245,7 @@ sap.ui.define(
                                         FWOItem.push(oItem);
                                     }
                                     that.getView().getModel("createItem").setProperty("/FWOItem", FWOItem);
-                                    that.getSourceEditable();
+                                    // that.getSourceEditable();
                                     for (let index = 0; index < oData.to_atta.results.length; index++) {
                                         const element = oData.to_atta.results[index];
                                         const oAttItem = that.getFwoHdrToAttachment();
@@ -259,6 +265,9 @@ sap.ui.define(
                                         FWOAttachmentSet.push(oAttItem);
                                     }
                                     that.getView().getModel("createItem").setProperty("/FwoHdrToAttachment", FWOAttachmentSet);
+                                    that.getView().getModel("createItem").setProperty("/isHeaderDataLoaded", true);
+                                    that.getView().getModel("createItem").setProperty("/isItemDataLoaded", true);
+                                    that.getView().getModel("createItem").setProperty("/isAttachmentDataLoaded", true);
                                     // that.getView().byId("idDestinationLocation").fireSelectionChange();
                                 }
                             }
@@ -267,6 +276,7 @@ sap.ui.define(
                     });
             },
             getSourceEditable: function () {
+                debugger;
                 const that = this;
                 that.getView().getModel("createItem").setProperty("/SourceEditable", true);
                 this.getView()
@@ -274,8 +284,9 @@ sap.ui.define(
                     .read("/xYZKNAxTM_V_SRCLOC_C", {
                         success: function (oData) {
                             if (oData && oData.results) {
+                                that.getView().getModel("createItem").setProperty("/isHeaderDataLoaded", true);
                                 if (oData.results.length === 1) {
-                                    that.getView().getModel("createItem").setProperty("/isHeaderDataLoaded", true);
+                                    
                                     that.getView().getModel("createItem").setProperty("/SourceEditable", false);
                                     const oSelectedObject = oData.results[0];
                                     that.getView().getModel("createItem").setProperty("/FWOHeader/SourceLocation", oData.results[0].descr40);
@@ -545,7 +556,7 @@ sap.ui.define(
                 const oObject = oEvent.getSource().getBindingContext("createItem").getObject();
                 var oUrl = oObject.Stream;
                 if (!oUrl) {
-                    var oUrl = "58c73230-5fdc-4195-869b-99e3afaced.com-yazaki-yazakisupload.comyazakiyazakisupload/sap/opu/odata/YZKNA/TM_FWO_SRV/FWOAttachmentSet(FwoNum='"+oObject.FwoNum+"',DocKey='"+oObject.doc_key+"',Name='"+oObject.Name+"',AlternativeName='"+oObject.AlternativeName+"',Description='"+oObject.Description+"',Folder='"+oObject.Folder+"',AttachmentType='"+oObject.AttachmentType+"')/$value";
+                    var oUrl = "/58c73230-5fdc-4195-869b-99e3afaced98.com-yazaki-yazakisupload.comyazakiyazakisupload/sap/opu/odata/YZKNA/TM_FWO_SRV/FWOAttachmentSet(FwoNum='"+oObject.FwoNum+"',DocKey='"+oObject.doc_key+"',Name='"+oObject.Name+"',AlternativeName='"+oObject.AlternativeName+"',Description='"+oObject.Description+"',Folder='"+oObject.Folder+"',AttachmentType='"+oObject.AttachmentType+"')/$value";
                 }
                 window.open(oUrl);
             },

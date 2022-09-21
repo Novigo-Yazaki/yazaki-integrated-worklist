@@ -51,29 +51,29 @@ sap.ui.define(
                 this.getView().getModel("createItem").setProperty("/FWObject", false);
             },
             initializeUOMs: function () {
-                debugger;
+                
                 const that = this;
-                this.getView().getModel().read('/xYZKNAxTM_V_QUALOOK_C',{
-                  success: function (oData) {
-                    that.getView().getModel("createItem").setProperty("/quantityHelper", oData.results);
-                  }
+                this.getView().getModel().read('/xYZKNAxTM_V_QUALOOK_C', {
+                    success: function (oData) {
+                        that.getView().getModel("createItem").setProperty("/quantityHelper", oData.results);
+                    }
                 });
-                this.getView().getModel().read('/xYZKNAxTM_V_WEILOOK_C',{
-                  success: function (oData) {
-                    that.getView().getModel("createItem").setProperty("/weightHelper", oData.results);
-                  }
+                this.getView().getModel().read('/xYZKNAxTM_V_WEILOOK_C', {
+                    success: function (oData) {
+                        that.getView().getModel("createItem").setProperty("/weightHelper", oData.results);
+                    }
                 })
-                this.getView().getModel().read('/xYZKNAxTM_V_MEASLOOK_C',{
-                  success: function (oData) {
-                    that.getView().getModel("createItem").setProperty("/dimensionsHelper", oData.results);
-                  }
+                this.getView().getModel().read('/xYZKNAxTM_V_MEASLOOK_C', {
+                    success: function (oData) {
+                        that.getView().getModel("createItem").setProperty("/dimensionsHelper", oData.results);
+                    }
                 })
-                this.getView().getModel().read('/xYZKNAxTM_V_VOLLOOK_C',{
-                  success: function (oData) {
-                    that.getView().getModel("createItem").setProperty("/volumeHelper", oData.results);
-                  }
+                this.getView().getModel().read('/xYZKNAxTM_V_VOLLOOK_C', {
+                    success: function (oData) {
+                        that.getView().getModel("createItem").setProperty("/volumeHelper", oData.results);
+                    }
                 })
-              },
+            },
             pickup_dtVlad: function () {
                 const that = this;
                 this.getView()
@@ -82,11 +82,11 @@ sap.ui.define(
                         success: function (oData) {
                             if (oData && oData.results.length > 0) {
                                 let minDateString = oData.results[0].pickup_cutoff_date;
-                                let minDateObj = new Date(Number(minDateString.substr(4,4)),Number(minDateString.substr(2,2))-1,Number(minDateString.substr(0,2)),0,0,0);
+                                let minDateObj = new Date(Number(minDateString.substr(4, 4)), Number(minDateString.substr(2, 2)) - 1, Number(minDateString.substr(0, 2)), 0, 0, 0);
                                 that.getView().getModel("createItem").setProperty("/xYZKNAxTM_V_SRCLOC_C", minDateObj);
                             }
                         },
-                        error: function (oError) {},
+                        error: function (oError) { },
                     });
             },
             _onObjectMatched: function () {
@@ -148,7 +148,7 @@ sap.ui.define(
                                     for (let index = 0; index < oData.to_item.results.length; index++) {
                                         const element = oData.to_item.results[index];
                                         const oItem = that.getFWOItemData();
-                                        // oItem.ItemDescr="";
+                                        oItem.ItemDescr=element.item_descr;
                                         oItem.Quantity = element.qua_pcs_val;
                                         oItem.QuantityUom = element.qua_pcs_uni;
                                         oItem.Weight = element.gro_wei_val;
@@ -169,7 +169,7 @@ sap.ui.define(
                             }
                             that.getView().getModel("createItem").setProperty("/isItemDataLoaded", true);
                         },
-                        error: function (oError) {},
+                        error: function (oError) { },
                     });
             },
             addedAtt: [],
@@ -231,7 +231,7 @@ sap.ui.define(
                                     for (let index = 0; index < oData.to_item.results.length; index++) {
                                         const element = oData.to_item.results[index];
                                         const oItem = that.getFWOItemData();
-                                        oItem.ItemDescr=element.item_descr;
+                                        oItem.ItemDescr = element.item_descr;
                                         oItem.Quantity = element.qua_pcs_val;
                                         oItem.QuantityUom = element.qua_pcs_uni;
                                         oItem.Weight = element.gro_wei_val;
@@ -272,11 +272,11 @@ sap.ui.define(
                                 }
                             }
                         },
-                        error: function (oError) {},
+                        error: function (oError) { },
                     });
             },
             getSourceEditable: function () {
-                debugger;
+                
                 const that = this;
                 that.getView().getModel("createItem").setProperty("/SourceEditable", true);
                 this.getView()
@@ -286,7 +286,7 @@ sap.ui.define(
                             if (oData && oData.results) {
                                 that.getView().getModel("createItem").setProperty("/isHeaderDataLoaded", true);
                                 if (oData.results.length === 1) {
-                                    
+
                                     that.getView().getModel("createItem").setProperty("/SourceEditable", false);
                                     const oSelectedObject = oData.results[0];
                                     that.getView().getModel("createItem").setProperty("/FWOHeader/SourceLocation", oData.results[0].descr40);
@@ -313,10 +313,11 @@ sap.ui.define(
                                 }
                             }
                         },
-                        error: function (oError) {},
+                        error: function (oError) { },
                     });
             },
             onSourceChange: function (oEvent) {
+                this._valueStateReset(oEvent);
                 const oSelectedObject = oEvent.getParameters().selectedItem.getBindingContext().getObject();
                 const oData = this.getView().getModel("createItem").getProperty("/FWOHeader");
                 oData.SourceLocation = oSelectedObject.descr40;
@@ -330,6 +331,7 @@ sap.ui.define(
                 this.getView().getModel("createItem").updateBindings();
             },
             onDestinationChange: function (oEvent) {
+                this._valueStateReset(oEvent);
                 const oSelectedObject = oEvent.getParameters().selectedItem.getBindingContext().getObject();
                 const oData = this.getView().getModel("createItem").getProperty("/FWOHeader");
                 oData.DestinationLocation = oSelectedObject.loc_desc;
@@ -385,7 +387,13 @@ sap.ui.define(
             },
             onSavePress: function () {
                 const oItem = this.getView().getModel("createItem").getProperty("/FWOItem");
-                this.CreateHeader();
+                let itemFields= this.getView().getControlsByFieldGroupId("ItemFields").filter(c => c.isA("sap.m.Input")|| c.isA("sap.m.ComboBox"));
+                if (this._validateInputs(itemFields)) {
+                    MessageToast.show("Please fill mandatory fields !");
+                }
+                else{
+                    this.CreateHeader();
+                }
             },
             CreateHeader: function () {
                 const oHeader = this.getView().getModel("createItem").getProperty("/FWOHeader");
@@ -465,7 +473,7 @@ sap.ui.define(
                                 MessageToast.show("Attachment Saved Successfully.");
                                 that.onNavBack();
                             },
-                            error: function (oError) {},
+                            error: function (oError) { },
                         });
                 }
             },
@@ -530,7 +538,7 @@ sap.ui.define(
                         };
                         reader.readAsDataURL(files[0]);
                     }
-                } catch (error) {}
+                } catch (error) { }
             },
             // onAttachmentFragPress:function(oEvent){},
             convertFileToUrl: function (vContent) {
@@ -556,7 +564,7 @@ sap.ui.define(
                 const oObject = oEvent.getSource().getBindingContext("createItem").getObject();
                 var oUrl = oObject.Stream;
                 if (!oUrl) {
-                    var oUrl = "/58c73230-5fdc-4195-869b-99e3afaced98.com-yazaki-yazakisupload.comyazakiyazakisupload/sap/opu/odata/YZKNA/TM_FWO_SRV/FWOAttachmentSet(FwoNum='"+oObject.FwoNum+"',DocKey='"+oObject.doc_key+"',Name='"+oObject.Name+"',AlternativeName='"+oObject.AlternativeName+"',Description='"+oObject.Description+"',Folder='"+oObject.Folder+"',AttachmentType='"+oObject.AttachmentType+"')/$value";
+                    var oUrl = "/58c73230-5fdc-4195-869b-99e3afaced98.com-yazaki-yazakisupload.comyazakiyazakisupload/sap/opu/odata/YZKNA/TM_FWO_SRV/FWOAttachmentSet(FwoNum='" + oObject.FwoNum + "',DocKey='" + oObject.doc_key + "',Name='" + oObject.Name + "',AlternativeName='" + oObject.AlternativeName + "',Description='" + oObject.Description + "',Folder='" + oObject.Folder + "',AttachmentType='" + oObject.AttachmentType + "')/$value";
                 }
                 window.open(oUrl);
             },
@@ -628,7 +636,7 @@ sap.ui.define(
                                 // that.onNavBack();
                                 that._onObjectMatchedobject();
                             },
-                            error: function (oError) {},
+                            error: function (oError) { },
                         });
                 }
                 for (let index = 0; index < deletedAtt.length; index++) {
@@ -642,9 +650,46 @@ sap.ui.define(
                                 // that.onNavBack();
                                 that._onObjectMatchedobject();
                             },
-                            error: function (oError) {},
+                            error: function (oError) { },
                         });
                 }
+            },
+            _validateInputs: function (fwoItems) {
+                let oView = this.getView();
+                let _validationError = false;
+
+                fwoItems.forEach(function(itemInput) {
+                    _validationError = this._validateItemInput(itemInput) || _validationError
+                },this)
+                
+                return _validationError;
+                
+            },
+            _validateInput: function (oInput) {
+                var sValueState = "None";
+                var bValidationError = false;
+                var oBinding = oInput.getBinding("value");
+
+                if(!oBinding){
+                    sValueState = "Error";
+                    bValidationError = true;
+                }
+                oInput.setValueState(sValueState);
+                return bValidationError;
+            },
+            _validateItemInput: function (oInput) {
+                if(!oInput.getValue()) {
+                    oInput.setValueState("Error")
+                    return true;
+                }
+            },
+            _valueStateReset: function(oInput) {
+                if(oInput.getValueState() === "Error"){
+                    oInput.setValueState("Success");
+                }
+            },
+            onPickupDateChange(oInput) {
+                this._valueStateReset(oInput);
             },
         });
     }

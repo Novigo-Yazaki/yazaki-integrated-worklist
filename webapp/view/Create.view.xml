@@ -127,10 +127,10 @@
 										singleContainerFullSize="false" >
 										<f:content>
 											<core:Title text="" />
-											<Label text="Source Location" visible="{=!${createItem>/FWObject}}"/>
+											<Label text="Source Location" visible="{=!${createItem>/FWObject}}" required="true"/>
 											<ComboBox enabled="{=!${createItem>/FWObject}}" id="idSourceLocation" visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>/FWOHeader/SourceLocation}" items="{
 													path: '/xYZKNAxTM_V_SRCLOC_C'
-												}" selectionChange="onSourceChange" editable="{createItem>/SourceEditable}">
+												}" selectionChange="onSourceChange" editable="{createItem>/SourceEditable}" valueStateText="Source Location should not be empty" fieldGroupIds="ItemFields">
 												<core:Item key="{descr40}" text="{descr40}" />
 											</ComboBox>
 											<Label text="Source Location"   visible="{createItem>/FWObject}"/>
@@ -146,7 +146,7 @@
 											<Label text="Destination Location" required="true" visible="{=!${createItem>/FWObject}}"/>
 											<ComboBox enabled="{=!${createItem>/FWObject}}" id="idDestinationLocation" selectedKey="{createItem>/FWOHeader/DestinationLocation}" items="{
 												path: '/xYZKNAxTM_V_DESLOOK_C'
-											}" selectionChange="onDestinationChange" visible="{=!${createItem>/FWObject}}">
+											}" selectionChange="onDestinationChange" visible="{=!${createItem>/FWObject}}" valueStateText="Destination Location should not be empty" fieldGroupIds="ItemFields">
 											<core:Item key="{loc_desc}" text="{loc_desc}" />
 										</ComboBox>
 										<Label text="Destination Location"  visible="{createItem>/FWObject}"/>
@@ -181,10 +181,12 @@
 											<DateTimePicker
 												id="DTP3"
 												displayFormat="short"
-												change=""
+												change="onPickupDateChange"
 												minDate="{createItem>/xYZKNAxTM_V_SRCLOC_C}"
 												dateValue="{createItem>/FWOHeader/PickupFromDatetime}" visible="{=!${createItem>/FWObject}}"
-												enabled="{=!${createItem>/FWObject}}"/>
+												enabled="{=!${createItem>/FWObject}}"
+                                                valueStateText="Please select the Pick-up Date"
+                                                fieldGroupIds="ItemFields"/>
 											<Label text="Pick up Date" required="true" visible="{createItem>/FWObject}"/>
 											<Text text="{= ${createItem>/FWOHeader/PickupFromDatetime} ?
 											${
@@ -234,7 +236,6 @@
 										</f:content>
 									</f:SimpleForm>
 									</VBox>
-							
 							</op:blocks>
 						</op:ObjectPageSubSection>
 					</op:subSections>
@@ -243,7 +244,7 @@
 					<op:subSections>
 						<op:ObjectPageSubSection id="goalsSectionSS10">
 							<op:blocks>
-								<Table inset="false" items="{createItem>/FWOItem}" mode="{=!${createItem>/FWObject}?'Delete':'None'}" delete="onDeleteRow">
+								<Table inset="false" items="{createItem>/FWOItem}" mode="{=!${createItem>/FWObject}?'Delete':'None'}" delete="onDeleteRow" id="itemTable">
 									<headerToolbar>
 										<OverflowToolbar visible="{=!${createItem>/FWObject}}">
 											<Label text="Insert Item" required="true" />
@@ -252,9 +253,6 @@
 										</OverflowToolbar>
 									</headerToolbar>
 									<columns>
-										<Column visible="false">
-											<Text text="ID"/>
-										</Column>
 										<Column>
 											<Text text="Item Description"/>
 										</Column>
@@ -287,17 +285,16 @@
 									<items>
 										<ColumnListItem vAlign="Middle">
 											<cells>
-												<ObjectIdentifier text="{createItem>ItemDescr}"/>
 												<VBox >
-													<Input value="{createItem>ItemDescr}" visible="{=!${createItem>/FWObject}}"/>
+													<Input value="{createItem>ItemDescr}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields"/>
 													<Text text="{createItem>ItemDescr}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<Input value="{createItem>Quantity}" visible="{=!${createItem>/FWObject}}"/>
+													<Input value="{createItem>Quantity}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields"/>
 													<Text text="{createItem>Quantity}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>QuantityUom}"
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>QuantityUom}" fieldGroupIds="ItemFields"
 														items="{
 															path: 'createItem>/quantityHelper'
 														}">
@@ -306,11 +303,11 @@
 													<Text text="{createItem>QuantityUom}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<Input value="{createItem>Weight}" visible="{=!${createItem>/FWObject}}"/>
+													<Input value="{createItem>Weight}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields"/>
 													<Text text="{createItem>Weight}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>WeightUom}"
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>WeightUom}" fieldGroupIds="ItemFields"
 														items="{
 															path: 'createItem>/weightHelper'
 														}">
@@ -320,14 +317,14 @@
 												</VBox>
 												<VBox >
 													<HBox visible="{=!${createItem>/FWObject}}" >
-														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Length}" class="sapUiTinyMarginEnd"/>
-														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Width}" class="sapUiTinyMarginEnd"/>
-														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Height}"/>
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Length}" class="sapUiTinyMarginEnd" fieldGroupIds="ItemFields"/>
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Width}" class="sapUiTinyMarginEnd" fieldGroupIds="ItemFields"/>
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Height}" fieldGroupIds="ItemFields"/>
 													</HBox>
-													<Text text="{createItem>Length} {createItem>Width} {createItem>Height}" visible="{createItem>/FWObject}" />
+													<Text text="{createItem>Length} {createItem>Width} {createItem>Height}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>DimUom}"
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>DimUom}" fieldGroupIds="ItemFields"
 														items="{
 															path: 'createItem>/dimensionsHelper'
 														}">
@@ -336,11 +333,11 @@
 													<Text text="{createItem>DimUom}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<Input visible="{=!${createItem>/FWObject}}" value="{createItem>Volume}"/>
+													<Input visible="{=!${createItem>/FWObject}}" value="{createItem>Volume}" fieldGroupIds="ItemFields"/>
 													<Text visible="{createItem>/FWObject}" text="{createItem>Volume}"/>
 												</VBox>
 												<VBox>
-													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>VolumeUom}" 
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>VolumeUom}" fieldGroupIds="ItemFields"
 														items="{
 															path: 'createItem>/volumeHelper'
 														}">

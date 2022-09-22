@@ -387,7 +387,7 @@ sap.ui.define(
             },
             onSavePress: function () {
                 const oItem = this.getView().getModel("createItem").getProperty("/FWOItem");
-                let itemFields= this.getView().getControlsByFieldGroupId("ItemFields").filter(c => c.isA("sap.m.Input")|| c.isA("sap.m.ComboBox"));
+                let itemFields= this.getView().getControlsByFieldGroupId("ItemFields").filter(c => c.isA("sap.m.Input")|| c.isA("sap.m.ComboBox") || c.isA("sap.m.DateTimePicker"));
                 if (this._validateInputs(itemFields)) {
                     MessageToast.show("Please fill mandatory fields !");
                 }
@@ -684,13 +684,16 @@ sap.ui.define(
                 }
             },
             _valueStateReset: function(oInput) {
-                if(oInput.getValueState() === "Error"){
-                    oInput.setValueState("Success");
+                if(oInput.getSource().getValueState() === "Error"){
+                    oInput.getSource().setValueState("None");
                 }
             },
             onPickupDateChange(oInput) {
                 this._valueStateReset(oInput);
             },
+            onItemsChange(oInput) {
+                this._valueStateReset(oInput);
+            }
         });
     }
 );

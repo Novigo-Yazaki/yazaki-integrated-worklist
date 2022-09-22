@@ -35,6 +35,13 @@ sap.ui.define([], function () {
           }
           return 'sap-icon://complete';
       },
+      formatDate: function(date,time,tzone){
+        if(!date || !time || !tzone){
+            return "";
+        }
+        let dateTimeString = new Date(Number(date.substr(4,4)),Number(date.substr(2,2))-1,Number(date.substr(0,2)),Number(time.substr(0,2)),Number(time.substr(2,2)),0).toLocaleString(undefined,{year: 'numeric',month: 'long',day:'numeric',hour:'numeric',minute:'numeric'});
+        return `${dateTimeString} ${tzone}`;
+      }
 
   };
 

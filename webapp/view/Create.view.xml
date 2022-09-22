@@ -257,7 +257,7 @@
 											<Text text="Item Description"/>
 										</Column>
 										<Column minScreenWidth="Tablet" demandPopin="true">
-											<Text text="QTY"/>
+											<Text text="Quantity"/>
 										</Column>
 										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
 											<Text text="UoM"/>
@@ -286,15 +286,15 @@
 										<ColumnListItem vAlign="Middle">
 											<cells>
 												<VBox >
-													<Input value="{createItem>ItemDescr}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields"/>
+													<Input value="{createItem>ItemDescr}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields" change="onItemsChange"/>
 													<Text text="{createItem>ItemDescr}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<Input value="{createItem>Quantity}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields"/>
+													<Input value="{createItem>Quantity}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields" change="onItemsChange"/>
 													<Text text="{createItem>Quantity}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>QuantityUom}" fieldGroupIds="ItemFields"
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>QuantityUom}" fieldGroupIds="ItemFields" change="onItemsChange"
 														items="{
 															path: 'createItem>/quantityHelper'
 														}">
@@ -303,11 +303,11 @@
 													<Text text="{createItem>QuantityUom}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<Input value="{createItem>Weight}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields"/>
+													<Input value="{createItem>Weight}" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields" change="onItemsChange"/>
 													<Text text="{createItem>Weight}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>WeightUom}" fieldGroupIds="ItemFields"
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>WeightUom}" fieldGroupIds="ItemFields" change="onItemsChange"
 														items="{
 															path: 'createItem>/weightHelper'
 														}">
@@ -317,14 +317,14 @@
 												</VBox>
 												<VBox >
 													<HBox visible="{=!${createItem>/FWObject}}" >
-														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Length}" class="sapUiTinyMarginEnd" fieldGroupIds="ItemFields"/>
-														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Width}" class="sapUiTinyMarginEnd" fieldGroupIds="ItemFields"/>
-														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Height}" fieldGroupIds="ItemFields"/>
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Length}" class="sapUiTinyMarginEnd" fieldGroupIds="ItemFields" change="onItemsChange"/>
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Width}" class="sapUiTinyMarginEnd" fieldGroupIds="ItemFields" change="onItemsChange"/>
+														<Input enabled="{=!${createItem>/FWObject}}" value="{createItem>Height}" fieldGroupIds="ItemFields" change="onItemsChange"/>
 													</HBox>
-													<Text text="{createItem>Length} {createItem>Width} {createItem>Height}" visible="{createItem>/FWObject}"/>
+													<Text text="{createItem>Length} x {createItem>Width} x {createItem>Height}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>DimUom}" fieldGroupIds="ItemFields"
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>DimUom}" fieldGroupIds="ItemFields" change="onItemsChange"
 														items="{
 															path: 'createItem>/dimensionsHelper'
 														}">
@@ -333,11 +333,11 @@
 													<Text text="{createItem>DimUom}" visible="{createItem>/FWObject}"/>
 												</VBox>
 												<VBox >
-													<Input visible="{=!${createItem>/FWObject}}" value="{createItem>Volume}" fieldGroupIds="ItemFields"/>
+													<Input visible="{=!${createItem>/FWObject}}" value="{createItem>Volume}" fieldGroupIds="ItemFields" change="onItemsChange"/>
 													<Text visible="{createItem>/FWObject}" text="{createItem>Volume}"/>
 												</VBox>
 												<VBox>
-													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>VolumeUom}" fieldGroupIds="ItemFields"
+													<ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>VolumeUom}" fieldGroupIds="ItemFields" change="onItemsChange"
 														items="{
 															path: 'createItem>/volumeHelper'
 														}">

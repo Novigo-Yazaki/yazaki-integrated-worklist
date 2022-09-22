@@ -138,22 +138,10 @@
             </cells>
 
             <cells>
-              <Text id="idPickupDate" text="{= ${pickup_dt} ?
-                        ${
-                            path: 'pickup_dt',
-                            type: 'sap.ui.model.type.DateTime',
-                            formatOptions: { style: 'medium' }
-                        }
-                    :''} {src_time_zone}" />
+              <Text id="idPickupDate" text="{parts:[{path:'pickup_date'},{path:'pickup_time'},{path:'src_time_zone'}],formatter: '.formatter.formatDate'}" />
             </cells>
             <cells>
-              <Text id="idDelivaryDate" text="{= ${del_dt} ?
-                        ${
-                            path: 'del_dt',
-                            type: 'sap.ui.model.type.DateTime',
-                            formatOptions: { style: 'medium' }
-                        }
-                    :''} {des_time_zone}" />
+              <Text id="idDelivaryDate" text="{parts:[{path:'del_date'},{path:'del_time'},{path:'des_time_zone'}],formatter: '.formatter.formatDate'}" />
             </cells>
             <cells>
               <Text text="{des_loc_des}" />

@@ -15,10 +15,6 @@ sap.ui.define(
                 console.log("Init")
                 let oViewModel;
                 this._aTableSearchState = [];
-                debugger;
-                let imageEl = this.byId("idCompanyLogo");
-                let imgSrc = sap.ui.require.toUrl("com/yazaki/yazakisupload/static/logo.png");
-                imageEl.setSrc(imgSrc);
                 oViewModel = new JSONModel({
                     worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
                     shareSendEmailSubject: this.getResourceBundle().getText("shareSendEmailWorklistSubject"),

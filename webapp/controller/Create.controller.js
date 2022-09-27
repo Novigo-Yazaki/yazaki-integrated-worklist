@@ -27,9 +27,6 @@ sap.ui.define(
 
                 // keeps the search state
                 this._aTableSearchState = [];
-                let imageEl = this.byId("idCompanyLogo");
-                let imgSrc = sap.ui.require.toUrl("com/yazaki/yazakisupload/static/logo.png");
-                imageEl.setSrc(imgSrc);
                 // Model used to manipulate control states
                 oViewModel = new JSONModel({
                     worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),

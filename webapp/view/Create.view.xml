@@ -132,18 +132,17 @@
                                                 selectionChange="onSourceChange"
                                                 editable="{createItem>/SourceEditable}"
                                                 valueStateText="Source Location should not be empty"
-                                                fieldGroupIds="ItemFields"
-                                            >
+                                                fieldGroupIds="ItemFields">
                                                 <core:Item key="{descr40}" text="{descr40}" />
                                             </ComboBox>
                                             <Label text="Source Location" visible="{createItem>/FWObject}" />
                                             <Text text="{createItem>/FWOHeader/SourceLocation}" visible="{createItem>/FWObject}" />
                                             <Label text="House/Street" />
-                                            <Text text="{createItem>/FWOHeader/SourceHouseNum}/{createItem>/FWOHeader/SourceStreet}" />
+                                            <Text text="{createItem>/FWOHeader/SourceHouseNum} / {createItem>/FWOHeader/SourceStreet}" />
                                             <Label text="City/Zip" />
-                                            <Text text="{createItem>/FWOHeader/SourceCity}/{createItem>/FWOHeader/SourcePostalcode}" />
+                                            <Text text="{createItem>/FWOHeader/SourceCity} / {createItem>/FWOHeader/SourcePostalcode}" />
                                             <Label text="Region/Country" />
-                                            <Text text="{createItem>/FWOHeader/SourceRegion}/{createItem>/FWOHeader/SourceCountry}" />
+                                            <Text text="{createItem>/FWOHeader/SourceRegion} / {createItem>/FWOHeader/SourceCountry}" />
 
                                             <core:Title text="" />
                                             <Label text="Destination Location" required="true" visible="{=!${createItem>/FWObject}}" />
@@ -164,11 +163,11 @@
                                             <Label text="Destination Location" visible="{createItem>/FWObject}" />
                                             <Text text="{createItem>/FWOHeader/DestinationLocation}" visible="{createItem>/FWObject}" />
                                             <Label text="House/Street" />
-                                            <Text text="{createItem>/FWOHeader/DestinationHouseNum}/{createItem>/FWOHeader/DestinationStreet}" />
+                                            <Text text="{createItem>/FWOHeader/DestinationHouseNum} / {createItem>/FWOHeader/DestinationStreet}" />
                                             <Label text="City/Zip" />
-                                            <Text text="{createItem>/FWOHeader/DestinationCity}/{createItem>/FWOHeader/DestinationPostalcode}" />
+                                            <Text text="{createItem>/FWOHeader/DestinationCity} / {createItem>/FWOHeader/DestinationPostalcode}" />
                                             <Label text="Region/Country" />
-                                            <Text text="{createItem>/FWOHeader/DestinationRegion}/{createItem>/FWOHeader/DestinationCountry}" />
+                                            <Text text="{createItem>/FWOHeader/DestinationRegion} / {createItem>/FWOHeader/DestinationCountry}" />
                                         </f:content>
                                     </f:SimpleForm>
                                     <f:SimpleForm
@@ -449,9 +448,6 @@
                                         </OverflowToolbar>
                                     </headerToolbar>
                                     <columns>
-                                        <Column width="12em">
-                                            <Text text="Type" />
-                                        </Column>
                                         <Column>
                                             <Text text="Created By" />
                                         </Column>
@@ -465,15 +461,14 @@
                                     <items>
                                         <ColumnListItem vAlign="Middle">
                                             <cells>
-                                                <ObjectIdentifier text="{createItem>AttachmentType}" />
                                                 <Text text="{createItem>created_by}" />
                                                 <Text text="{= ${createItem>created_on_dt} ?
-											${
-												path: 'createItem>created_on_dt',
-												type: 'sap.ui.model.type.Date',
-												formatOptions: { style: 'medium' }
-											}
-										:''}" />
+                                                    ${
+                                                        path: 'createItem>created_on_dt',
+                                                        type: 'sap.ui.model.type.Date',
+                                                        formatOptions: { style: 'medium' }
+                                                    }
+                                                :''}" />
                                                 <Link text="{createItem>AlternativeName}" press="onLinkPress" />
                                             </cells>
                                         </ColumnListItem>

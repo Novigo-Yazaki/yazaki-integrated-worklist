@@ -130,6 +130,12 @@ sap.ui.define(
                             if (oData) {
                                 const oDataHeader = {
                                     SourceLocation: oData.src_loc_des,
+                                    SourceHouseNum: oData.src_house_num,
+                                    SourceStreet: oData.src_street,
+                                    SourceCity: oData.src_city,
+                                    SourcePostalcode: oData.src_postal_code,
+                                    SourceRegion: oData.src_region,
+                                    SourceCountry: oData.src_country,
                                     PickupFromDatetime: oData.pickup_dt,
                                     DestinationLocation: oData.des_loc_des,
                                     DestinationCountry: oData.des_country,
@@ -322,8 +328,8 @@ sap.ui.define(
                 oData.SourceStreet = oSelectedObject.house_num_street ? oSelectedObject.house_num_street.split(",")[1] : "";
                 oData.SourceCity = oSelectedObject.city_zip ? oSelectedObject.city_zip.split("-")[0] : "";
                 oData.SourcePostalcode = oSelectedObject.city_zip ? oSelectedObject.city_zip.split("-")[1] : "";
-                oData.SourceRegion = oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[0] : "";
-                oData.SourceCountry = oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[1] : "";
+                oData.SourceRegion = oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[0].trim() : "";
+                oData.SourceCountry = oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[1].trim() : "";
                 this.getView().getModel("createItem").setProperty("/FWOHeader", oData);
                 this.getView().getModel("createItem").updateBindings();
             },
@@ -336,8 +342,8 @@ sap.ui.define(
                 oData.DestinationStreet = oSelectedObject.house_num_street ? oSelectedObject.house_num_street.split(",")[1] : "";
                 oData.DestinationCity = oSelectedObject.city_zip ? oSelectedObject.city_zip.split("-")[0] : "";
                 oData.DestinationPostalcode = oSelectedObject.city_zip ? oSelectedObject.city_zip.split("-")[1] : "";
-                oData.DestinationRegion = oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[0] : "";
-                oData.DestinationCountry = oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[1] : "";
+                oData.DestinationRegion = oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[0].trim() : "";
+                oData.DestinationCountry = oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[1].trim() : "";
                 this.getView().getModel("createItem").setProperty("/FWOHeader", oData);
                 this.getView().getModel("createItem").updateBindings();
             },
@@ -421,11 +427,12 @@ sap.ui.define(
                     delete element.Stream;
                 }
                 oHeader.FwoHdrToAttachment = attData;
-
+                this.getView().setBusy(true);
                 this.getView()
                     .getModel()
                     .create("/FWOHeaderSet", oHeader, {
                         success: function (oData) {
+                            that.getView().setBusy(false);
                             MessageBox.success(`Worklist Created with Forwarding order :${oData.FwoNum}`, {
                                 actions: [MessageBox.Action.OK],
                                 emphasizedAction: MessageBox.Action.OK,
@@ -439,7 +446,8 @@ sap.ui.define(
                             // that.onNavBack();
                         },
                         error: function (oError) {
-                            that.saveAttachment();
+                            that.getView().setBusy(false);
+                            // that.saveAttachment();
                         },
                     });
             },

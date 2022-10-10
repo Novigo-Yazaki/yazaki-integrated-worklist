@@ -132,7 +132,8 @@
                                                 selectionChange="onSourceChange"
                                                 editable="{createItem>/SourceEditable}"
                                                 valueStateText="Source Location should not be empty"
-                                                fieldGroupIds="ItemFields">
+                                                fieldGroupIds="ItemFields"
+                                            >
                                                 <core:Item key="{descr40}" text="{descr40}" />
                                             </ComboBox>
                                             <Label text="Source Location" visible="{createItem>/FWObject}" />
@@ -232,24 +233,34 @@
                                         singleContainerFullSize="false"
                                     >
                                         <f:content>
-                                            <core:Title text="" />
-                                            <Label text="Reference 1" visible="{=!${createItem>/FWObject}}" />
-                                            <Input value="" visible="{=!${createItem>/FWObject}}" />
-                                            <Label text="Reference 2" visible="{=!${createItem>/FWObject}}" />
-                                            <Input value="" visible="{=!${createItem>/FWObject}}" />
-                                            <Label text="Reference 1" visible="{createItem>/FWObject}" />
-                                            <Text text="" visible="{createItem>/FWObject}" />
-                                            <Label text="Reference 2" visible="{createItem>/FWObject}" />
-                                            <Text text="" visible="{createItem>/FWObject}" />
-                                            <core:Title text="" />
-                                            <Label text="Reference 3" visible="{=!${createItem>/FWObject}}" />
-                                            <Input value="" visible="{=!${createItem>/FWObject}}" />
-                                            <Label text="Reference 4" visible="{=!${createItem>/FWObject}}" />
-                                            <Input value="" visible="{=!${createItem>/FWObject}}" />
-                                            <Label text="Reference 3" visible="{createItem>/FWObject}" />
-                                            <Text text="" visible="{createItem>/FWObject}" />
-                                            <Label text="Reference 4" visible="{createItem>/FWObject}" />
-                                            <Text text="" visible="{createItem>/FWObject}" />
+                                            <!-- Editable Fields -->
+                                            
+                                            <Label text="Packing Slip" visible="{=!${createItem>/FWObject}}" />
+                                            <Input value="" visible="{=!${createItem>/FWObject}}" maxLength="40" id="packingSlip" />
+                                            <Label text="Stackable" visible="{=!${createItem>/FWObject}}" />
+                                            <Switch state="true" id="isStackable" customTextOn="Yes" customTextOff="No" visible="{=!${createItem>/FWObject}}">
+                                                <layoutData>
+                                                    <FlexItemData growFactor="1" />
+                                                </layoutData>
+                                            </Switch>
+                                            <Label text="Special Instructions" visible="{=!${createItem>/FWObject}}" />
+                                            <TextArea id="specialInstructions" placeholder="" growing="true" growingMaxLines="3" width="100%" visible="{=!${createItem>/FWObject}}" />
+                                            <Label text="Name" visible="{=!${createItem>/FWObject}}" />
+                                            <Input id="createdBy" value="" visible="{=!${createItem>/FWObject}}" maxLength="40" placeholder="Enter Firstname &amp; Lastname" />
+                                            <Label text="Email" visible="{=!${createItem>/FWObject}}" />
+                                            <Input id="supplierEmail" value="" visible="{=!${createItem>/FWObject}}" placeholder="Enter email" />
+
+                                            <!-- Display Fields -->
+                                            <Label text="Packing Slip" visible="{createItem>/FWObject}" />
+                                            <Text text="{createItem>/FWOHeader/YpackingSlip}" visible="{createItem>/FWObject}" />
+                                            <Label text="Stackable" visible="{createItem>/FWObject}" />
+                                            <Text text="{=${createItem>/FWOHeader/Ystackable} ==='X'?'Yes':'No'}" visible="{createItem>/FWObject}" />
+                                            <Label text="Special Instructions" visible="{createItem>/FWObject}" />
+                                            <Text text="{createItem>/FWOHeader/packing_slip}" visible="{createItem>/FWObject}" />
+                                            <Label text="Name" visible="{createItem>/FWObject}" />
+                                            <Text text="{createItem>/FWOHeader/Yname}" visible="{createItem>/FWObject}" />
+                                            <Label text="Email" visible="{createItem>/FWObject}" />
+                                            <Text text="{createItem>/FWOHeader/Yemail}" visible="{createItem>/FWObject}" />
                                         </f:content>
                                     </f:SimpleForm>
                                 </VBox>
@@ -336,7 +347,8 @@
                                                         fieldGroupIds="ItemFields"
                                                         change="onItemsChange"
                                                     />
-                                                    <Text text="{
+                                                    <Text
+                                                        text="{
                                                             path:'createItem>Weight',
                                                             type: 'FloatType',
                                                             formatOptions: {
@@ -348,8 +360,9 @@
                                                             constraints: {
                                                             maximum: '99999.99'
                                                             }
-                                                        }" 
-                                                        visible="{createItem>/FWObject}" />
+                                                        }"
+                                                        visible="{createItem>/FWObject}"
+                                                    />
                                                 </VBox>
                                                 <VBox>
                                                     <ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>WeightUom}" fieldGroupIds="ItemFields" change="onItemsChange" items="{
@@ -376,7 +389,8 @@
                                                     <Text text="{createItem>DimUom}" visible="{createItem>/FWObject}" />
                                                 </VBox>
                                                 <VBox>
-                                                    <Input value="{
+                                                    <Input
+                                                        value="{
                                                             path:'createItem>Volume',
                                                             type: 'FloatType',
                                                             formatOptions: {
@@ -388,8 +402,14 @@
                                                             constraints: {
                                                                 maximum: '99999.99'
                                                             }
-                                                        }" visible="{=!${createItem>/FWObject}}" fieldGroupIds="ItemFields" change="onItemsChange" />
-                                                    <Text visible="{createItem>/FWObject}" text="{
+                                                        }"
+                                                        visible="{=!${createItem>/FWObject}}"
+                                                        fieldGroupIds="ItemFields"
+                                                        change="onItemsChange"
+                                                    />
+                                                    <Text
+                                                        visible="{createItem>/FWObject}"
+                                                        text="{
                                                             path:'createItem>Volume',
                                                             type: 'FloatType',
                                                             formatOptions: {
@@ -401,7 +421,8 @@
                                                             constraints: {
                                                                 maximum: '99999.99'
                                                             }
-                                                        }" />
+                                                        }"
+                                                    />
                                                 </VBox>
                                                 <VBox>
                                                     <ComboBox visible="{=!${createItem>/FWObject}}" selectedKey="{createItem>VolumeUom}" fieldGroupIds="ItemFields" change="onItemsChange" items="{
@@ -462,13 +483,15 @@
                                         <ColumnListItem vAlign="Middle">
                                             <cells>
                                                 <Text text="{createItem>created_by}" />
-                                                <Text text="{= ${createItem>created_on_dt} ?
+                                                <Text
+                                                    text="{= ${createItem>created_on_dt} ?
                                                     ${
                                                         path: 'createItem>created_on_dt',
                                                         type: 'sap.ui.model.type.Date',
                                                         formatOptions: { style: 'medium' }
                                                     }
-                                                :''}" />
+                                                :''}"
+                                                />
                                                 <Link text="{createItem>AlternativeName}" press="onLinkPress" />
                                             </cells>
                                         </ColumnListItem>

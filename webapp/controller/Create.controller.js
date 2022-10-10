@@ -101,6 +101,11 @@ sap.ui.define(
                     DestinationRegion: "",
                     DestinationCity: "",
                     DestinationStreet: "",
+                    YpackingSlip: "",
+                    Ystackable: "",
+                    Yname:"",
+                    Yemail:"",
+                    YspecialInstructions: ""
                 };
 
                 this.getView().getModel("createItem").setProperty("/FWOHeader", oDataHeader);
@@ -144,6 +149,10 @@ sap.ui.define(
                                     DestinationPostalcode: oData.des_postal_code,
                                     DestinationStreet: oData.des_street,
                                     DestinationHouseNum: oData.des_house_num,
+                                    YpackingSlip: oData.ypacking_slip,
+                                    Ystackable: oData.ystackable,
+                                    Yname:oData.ysupp_name,
+                                    Yemail:oData.ysupp_email
                                 };
                                 const FWOItem = [];
                                 that.getView().getModel("createItem").setProperty("/FWOHeader", oDataHeader);
@@ -226,6 +235,10 @@ sap.ui.define(
                                     tsp_id: oData.tsp_id,
                                     fo_status: oData.fo_status,
                                     trq_id: oData.trq_id,
+                                    YpackingSlip: oData.ypacking_slip,
+                                    Ystackable: oData.ystackable,
+                                    Yname:oData.ysupp_name,
+                                    Yemail:oData.ysupp_email
                                 };
                                 const FWOItem = [];
                                 const FWOAttachmentSet = [];
@@ -400,9 +413,12 @@ sap.ui.define(
             },
             CreateHeader: function () {
                 const oHeader = this.getView().getModel("createItem").getProperty("/FWOHeader");
-                // oHeader.PickupFromDatetime=new Date(oHeader.PickupFromDatetime);
+                oHeader.YpackingSlip = this.getView().byId("packingSlip").getValue();
+                oHeader.Ystackable = this.getView().byId("isStackable").getState() === true ? 'X' : '';
+                oHeader.Yname = this.getView().byId("createdBy").getValue();
+                oHeader.Yemail = this.getView().byId("supplierEmail").getValue();
+                oHeader.YspecialInstructions = this.getView().byId("specialInstructions").getValue();
                 const that = this;
-                // oHeader.PickupFromDatetime=oHeader.PickupFromDatetime.toISOString();
 
                 oHeader.FwoHdrToItem = this.getView().getModel("createItem").getProperty("/FWOItem");
                 const attData = that.getView().getModel("createItem").getProperty("/FwoHdrToAttachment");
@@ -447,6 +463,10 @@ sap.ui.define(
                         },
                         error: function (oError) {
                             that.getView().setBusy(false);
+                            MessageBox.error(oError.message, {
+                                actions: [MessageBox.Action.OK],
+                                emphasizedAction: MessageBox.Action.OK,
+                            });
                             // that.saveAttachment();
                         },
                     });
@@ -458,19 +478,6 @@ sap.ui.define(
                     const element = attData[index];
                     delete element.Stream;
                     element.FwoNum = fwdNo;
-
-                    // var payload={
-                    //     "FWO_NUM":element.FwoNum,
-                    //     "DOC_KEY":"",
-                    //     "NAME":element.Name,
-                    //     "ALTERNATIVE_NAME":element.AlternativeName,
-                    //     "FILESIZE_CONTENT":element.FilesizeContent,
-                    //     "DESCRIPTION":element.Description,
-                    //     "FOLDER":element.Folder,
-                    //     "MIME_CODE":element.MimeCode,
-                    //     "ATTACHMENT_TYPE":element.AttachmentType,
-                    //     "ATTACHMENT_DATA":element.AttachmentData
-                    // }
                     this.getView()
                         .getModel()
                         .create("/FWOAttachmentSet", element, {
@@ -523,19 +530,7 @@ sap.ui.define(
                                 attData.push(fileData);
                                 that.addedAtt.push(fileData);
                                 that.getView().getModel("createItem").setProperty("/FwoHdrToAttachment", attData);
-                                // let oAttDta={
-                                // 	"U_NEO_JBS_PATH":fileData.Name,
-                                // 	"U_NEO_JBS_MIMETYPE":fileData.Type,
-                                // 	"U_NEO_JBS_EXPENSEID":oAttachData.U_NEO_JBS_TSHEETID,
-                                // 	"U_NEO_JBS_TSHEETID":oAttachData.DocEntry?oAttachData.DocEntry:null,
-                                // 	"FileContent":that.attachextraContentRemove(fileData.Content),
-                                // 	"FileStream": fileData.Stream,
-                                // 	"FileStatus":"N",
-                                // 	"Type": await that.formatExpType(oAttachData.U_NEO_JBS_TYPE,oAttachData.U_NEO_JBS_TYPEID)
-                                // };
-                                // oAttachData.attachment.push(oAttDta);
-                                // oAttachData.localStatus=oAttachData.localStatus==="N"?oAttachData.localStatus:"U";
-                                // that.getView().getModel("timesheetData").setProperty(that.oAttachmentSelectedPath,oAttachData);
+                                
                                 that.getView().getModel("createItem").updateBindings();
                             } catch (err) {
                                 console.log(err);
@@ -619,20 +614,6 @@ sap.ui.define(
                     const m = regex.exec(element.AttachmentData),
                         decodedPdfContent = element.AttachmentData.replace(regex, "");
                     element.AttachmentData = base64ToHex(decodedPdfContent);
-
-                    // var payload={
-                    //     "FWO_NUM":element.FwoNum,
-                    //     "DOC_KEY":"",
-                    //     "NAME":element.Name,
-                    //     "ALTERNATIVE_NAME":element.AlternativeName,
-                    //     "FILESIZE_CONTENT":element.FilesizeContent,
-                    //     "DESCRIPTION":element.Description,
-                    //     "FOLDER":element.Folder,
-                    //     "MIME_CODE":element.MimeCode,
-                    //     "ATTACHMENT_TYPE":element.AttachmentType,
-                    //     "ATTACHMENT_DATA":element.AttachmentData
-                    // }
-                    // this.getView().getModel().setHeaders({"SLUG":JSON.stringify(element)})
                     this.getView()
                         .getModel()
                         .create("/FWOCreateAttachmentSet", element, {

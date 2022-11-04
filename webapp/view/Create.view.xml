@@ -256,7 +256,7 @@
                                             <Label text="Stackable" visible="{createItem>/FWObject}" />
                                             <Text text="{=${createItem>/FWOHeader/Ystackable} ==='X'?'Yes':'No'}" visible="{createItem>/FWObject}" />
                                             <Label text="Special Instructions" visible="{createItem>/FWObject}" />
-                                            <Text text="{createItem>/FWOHeader/packing_slip}" visible="{createItem>/FWObject}" />
+                                            <Text text="{createItem>/FWOHeader/YspecialInstructions}" visible="{createItem>/FWObject}" />
                                             <Label text="Name" visible="{createItem>/FWObject}" />
                                             <Text text="{createItem>/FWOHeader/Yname}" visible="{createItem>/FWObject}" />
                                             <Label text="Email" visible="{createItem>/FWObject}" />

@@ -238,7 +238,8 @@ sap.ui.define(
                                     YpackingSlip: oData.ypacking_slip,
                                     Ystackable: oData.ystackable,
                                     Yname:oData.ysupp_name,
-                                    Yemail:oData.ysupp_email
+                                    Yemail:oData.ysupp_email,
+                                    YspecialInstructions: oData.yspecial_instructions
                                 };
                                 const FWOItem = [];
                                 const FWOAttachmentSet = [];

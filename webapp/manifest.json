@@ -40,7 +40,7 @@
                     "icon": "sap-icon://product",
                     "indicatorDataSource": {
                         "dataSource": "mainService",
-                        "path": "/58c73230-5fdc-4195-869b-99e3afaced98.com-yazaki-yazakisupload.comyazakiyazakisupload/sap/opu/odata/YZKNA/TM_FWO_SRV/xYZKNAxTM_V_FWOHEAD_C/$count?$filter=fo_status ne 'Not Planned'",
+                        "path": "/58c73230-5fdc-4195-869b-99e3afaced98.com-yazaki-yazakisupload.comyazakiyazakisupload/sap/opu/odata/YZKNA/TM_FWO_SRV/xYZKNAxTM_V_FWOHEAD_C/$count?$filter=fo_status eq 'New'",
                         "refresh": 120
                     }
                 }

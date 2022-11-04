@@ -19,7 +19,7 @@ server:
           - path: /sap
             url: http://vhynatd1ci.sap.yazaki.com:8000
             client: '300'
-            destination: TD1CLNT300_PP
+            destination: SAPTM_PP
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

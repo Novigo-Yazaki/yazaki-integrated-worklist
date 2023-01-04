@@ -324,7 +324,7 @@ sap.ui.define(
                                         .setProperty("/FWOHeader/SourceCountry", oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[1] : "");
                                     that.getView()
                                         .getModel("createItem")
-                                        .setProperty("/FWOHeader/SourceRegion", oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[0] : "");
+                                        .setProperty("/FWOHeader/SourceRegion", oSelectedObject.region_country ? oSelectedObject.region_country.split(",")[0].trim() : "");
                                     // that.getView().getModel("createItem").setProperty("/FWOHeader/SourceLocation",oData.results[0].descr40);
                                     // that.getView().byId("idSourceLocation").fireSelectionChange();
                                 }

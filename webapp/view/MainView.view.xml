@@ -19,7 +19,7 @@
           </smartFilterBar:customControl>
         </smartFilterBar:ControlConfiguration>
 
-        <smartFilterBar:ControlConfiguration index="1" key="tsp_id" label="Pick-up Date" visibleInAdvancedArea="true">
+        <smartFilterBar:ControlConfiguration index="1" key="pickup_dt" label="Pick-up Date" visibleInAdvancedArea="true">
           <smartFilterBar:customControl>
             <DateRangeSelection id="DRS2" placeholder="MM/DD/YYYY - MM/DD/YYYY" />
           </smartFilterBar:customControl>
